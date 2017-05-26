@@ -4,6 +4,9 @@
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
 
+
+
+
   // Selvitetään, missä kansiossa index.php on
   $script_name = $_SERVER['SCRIPT_NAME'];
   $explode =  explode('/', $script_name);
@@ -15,7 +18,10 @@
   }
 
   // Määritetään sovelluksen juuripolulle vakio BASE_PATH
-  define('BASE_PATH', '/' . $base_folder);
+      define('BASE_PATH', '/' . $base_folder);
+
+
+    
 
   // Luodaan uusi tai palautetaan olemassaoleva sessio
   if(session_id() == '') {
