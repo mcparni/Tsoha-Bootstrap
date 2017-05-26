@@ -1,10 +1,12 @@
-# Tietokantasovelluksen esittelysivu
+# Urheilusovellus
+Web sovellus urheilulajien ja -suoritusten tallentamiseen ja tarkasteluun 
 
-Yleisiä linkkejä:
+Tämä on simppeli web-sivusto, johon voi ylläpitäjä sisäänkirjauduttuaan käydä lisäämässä, poistamassa ja muokkaamassa urheilulajeja, urheilijoita ja tuloksia. Peruskäyttäjä voi taas käydä näitä pelkästään katselemassa.
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+## Sovellus:
+Valmis sovellus löytyy osoitteesta: 
+<a href="http://mcparni.users.cs.helsinki.fi/urheilusovellus" target="_blank">http://mcparni.users.cs.helsinki.fi/urheilusovellus</a>
 
-## Työn aihe
-
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+## Linkki dokumentaatioon:
+Dokumentaatio löytyy osoitteesta:
+<a href="https://github.com/mcparni/urheilusovellus/blob/master/doc/dokumentaatio.pdf" target="_blank">https://github.com/mcparni/urheilusovellus/blob/master/doc/dokumentaatio.pdf</a>
