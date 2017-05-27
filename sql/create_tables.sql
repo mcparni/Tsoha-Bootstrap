@@ -23,5 +23,6 @@ CREATE TABLE Results (
   id SERIAL PRIMARY KEY,
   player_id INTEGER REFERENCES Player(id),
   sport_id INTEGER REFERENCES Sport(id),
-  result varchar(100)
+  result varchar(100),
+  createdon DATE
 );
