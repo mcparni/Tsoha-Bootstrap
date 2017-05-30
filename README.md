@@ -18,7 +18,7 @@ Yksittäisen urheilujan sivu http://mcparni.users.cs.helsinki.fi/urheilusovellus
 Lajien koontisiuv: http://mcparni.users.cs.helsinki.fi/urheilusovellus/lajit <br/>
 Yksittäisen lajin sivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/lajit/laji <br/>
 Tulosten koontisivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/tulokset <br/>
-Kirjautumissivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/tulokset <br/>
+Kirjautumissivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/kirjaudu <br/>
 
 ## Muokkaukset
 Sivujen ja tietokannan muokkaus tulee hyväksikäyttämään noita samoja sivuja.
