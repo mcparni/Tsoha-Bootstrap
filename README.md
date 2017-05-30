@@ -16,7 +16,7 @@ Etusivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus <br/>
 Urheilijat koontisivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/urheilijat <br/>
 Yksittäisen urheilujan sivu http://mcparni.users.cs.helsinki.fi/urheilusovellus/urheilijat/urheilija <br/>
 Lajien koontisiuv: http://mcparni.users.cs.helsinki.fi/urheilusovellus/lajit <br/>
-Yksittäisen lajin sivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/laji <br/>
+Yksittäisen lajin sivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/lajit/laji <br/>
 Tulosten koontisivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/tulokset <br/>
 Kirjautumissivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/tulokset <br/>
 
