@@ -8,7 +8,7 @@ class HelloWorldController extends BaseController{
 	}
 
 	public static function kirjaudu(){
-		View::make('kirjaudu.html');
+		View::make('kirjaudu/kirjaudu.html');
 	}
 
 	public static function sandbox(){
