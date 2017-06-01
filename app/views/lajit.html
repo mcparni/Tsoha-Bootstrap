@@ -8,5 +8,13 @@
 <p>
 	Tämä on kokoomasivu kaikista lajeista.
 </p>
-<p><a href="lajit/laji">Laji 1 </a></p>
+<div class="content">
+	<div class="row">
+		{% for sport in sports %}
+		<div class="col-xs-6 col-md-4">
+			<a href="{{base_path}}/lajit/{{sport.id}}">{{sport.name}}</a>
+		</div>
+		{% endfor %}
+	</div>
+</div>
 {% endblock %}

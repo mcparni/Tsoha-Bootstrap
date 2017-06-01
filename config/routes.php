@@ -5,12 +5,13 @@
   });
 
   $routes->get('/lajit', function() {
-    HelloWorldController::lajit();
+    SportController::lajit();
   });
 
-  $routes->get('/lajit/laji', function() {
-    HelloWorldController::laji();
+  $routes->get('/lajit/:id', function($id){
+    SportController::show($id);
   });
+
 
   $routes->get('/urheilijat', function() {
     HelloWorldController::urheilijat();

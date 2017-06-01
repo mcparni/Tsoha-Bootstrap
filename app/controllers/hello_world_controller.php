@@ -7,10 +7,6 @@ class HelloWorldController extends BaseController{
 		View::make('home.html');
 	}
 
-	public static function lajit(){
-		View::make('lajit.html');
-	}
-
 	public static function laji(){
 		View::make('laji.html');
 	}
