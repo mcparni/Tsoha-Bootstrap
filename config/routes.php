@@ -9,16 +9,15 @@
   });
 
   $routes->get('/lajit/:id', function($id){
-    SportController::show($id);
+    SportController::laji($id);
   });
-
 
   $routes->get('/urheilijat', function() {
-    HelloWorldController::urheilijat();
+    PlayerController::urheilijat();
   });
 
-  $routes->get('/urheilijat/urheilija', function() {
-    HelloWorldController::urheilija();
+  $routes->get('/urheilijat/:id', function($id){
+    PlayerController::urheilija($id);
   });
 
   $routes->get('/tulokset', function() {

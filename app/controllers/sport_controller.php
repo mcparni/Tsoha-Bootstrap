@@ -7,7 +7,7 @@ class SportController extends BaseController{
 		$sports = Sport::all();
 		View::make('lajit.html', array('sports' => $sports));
 	}
-	public static function show($id){
+	public static function laji($id){
 		$sport = Sport::find($id);
 		View::make('laji.html', array('sport' => $sport));
 	}

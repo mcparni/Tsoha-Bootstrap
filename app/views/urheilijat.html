@@ -5,8 +5,14 @@
     <h1>Urheilijat</h1>
   </div>
 
-  <p>
-  	Tämä on kokoomasivu kaikista urheilijoista.
-  </p>
-  <p><a href="urheilijat/urheilija">Urheilija 1 </a></p>
+
+<div class="content">
+	<div class="row">
+		{% for player in players %}
+		<div class="col-xs-6 col-md-4">
+			<a href="{{base_path}}/urheilijat/{{player.id}}">{{player.name}}</a>
+		</div>
+		{% endfor %}
+	</div>
+</div>
 {% endblock %}
