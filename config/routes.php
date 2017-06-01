@@ -21,7 +21,7 @@
   });
 
   $routes->get('/tulokset', function() {
-    HelloWorldController::tulokset();
+    ResultsController::tulokset();
   });
 
   $routes->get('/kirjaudu', function() {
