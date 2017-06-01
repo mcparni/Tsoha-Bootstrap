@@ -42,6 +42,15 @@ class Player extends BaseModel{
 		return null;
 
 	}
+
+	public function tallenna() {
+	    $query = DB::connection()->prepare('INSERT INTO Player (name, description) VALUES (:name, :description) RETURNING id');
+	    $query->execute(array('name' => $this->name, 'description' => $this->description));
+	    $row = $query->fetch();
+	    Kint::trace();
+  		Kint::dump($row);
+	    $this->id = $row['id'];
+	}
 	
 
 }

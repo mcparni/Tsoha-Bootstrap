@@ -16,6 +16,14 @@
     PlayerController::urheilijat();
   });
 
+  $routes->post('/urheilijat', function() {
+    PlayerController::prosessoi();
+  });
+
+  $routes->get('/urheilijat/uusi', function() {
+    PlayerController::uusi();
+  });
+
   $routes->get('/urheilijat/:id', function($id){
     PlayerController::urheilija($id);
   });
