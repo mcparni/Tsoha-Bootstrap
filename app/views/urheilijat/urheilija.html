@@ -10,6 +10,10 @@
 	<div class="page-header">
 		<h1>{{player.name}}</h1>
 		<a class="btn btn-success" href="{{base_path}}/urheilijat/{{player.id}}/edit">Muokkaa</a>
+		
+		<form method="post" action="{{base_path}}/urheilijat/{{player.id}}/remove">
+			<button type="submit" class="btn btn-danger">Poista</button>
+		</form>
 	</div>
 
 	<div class="content">

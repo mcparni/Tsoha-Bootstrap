@@ -36,6 +36,10 @@
     PlayerController::update($id);
   });
 
+  $routes->post('/urheilijat/:id/remove', function($id){
+    PlayerController::remove($id);
+  });
+
   $routes->get('/tulokset', function() {
     ResultsController::tulokset();
   });

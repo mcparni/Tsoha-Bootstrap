@@ -42,19 +42,26 @@ class Player extends BaseModel{
 		return null;
 
 	}
+
+	public function remove() {
+		$query = DB::connection()->prepare('DELETE FROM Player WHERE id=:id RETURNING id');
+	    $query->execute(array('id' => $this->id));
+	    $row = $query->fetch();
+		$this->id = $row['id'];
+	}
 	
 	public function update() {
-		$query = DB::connection()->prepare('UPDATE PLAYER SET name=:name, description=:description WHERE id=:id RETURNING id');
+		$query = DB::connection()->prepare('UPDATE Player SET name=:name, description=:description WHERE id=:id RETURNING id');
 	    $query->execute(array('name' => $this->name, 'description' => $this->description, 'id' => $this->id ));
 	    $row = $query->fetch();
-	    Kint::trace();
-  		Kint::dump($row);
-		Kint::dump($this->id);
+	    //Kint::trace();
+  		//Kint::dump($row);
+		//Kint::dump($this->id);
 		$this->id = $row['id'];
 	}
 
 	public function tallenna() {
-	    $query = DB::connection()->prepare('INSERT INTO Player (name, description) VALUES (:name, :description) RETURNING id');
+	    $query = DB::connection()->prepare('INSERT INTO Player (name, description, createdon) VALUES (:name, :description, NOW()) RETURNING id');
 	    $query->execute(array('name' => $this->name, 'description' => $this->description));
 	    $row = $query->fetch();
 	    //Kint::trace();

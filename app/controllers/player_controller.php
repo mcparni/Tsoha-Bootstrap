@@ -17,6 +17,16 @@ class PlayerController extends BaseController{
 	public static function uusi(){
 		View::make('urheilijat/uusi.html');
 	}
+	public static function remove($id) {
+		
+	    $params = $_POST;
+		$player = new Player(array(
+			'id' => $id
+	    ));
+
+		$player->remove();
+		Redirect::to('/urheilijat', array('message' => 'Pelaaja poistettu'));
+	}
 	public static function update($id) {
 		
 	    $params = $_POST;
