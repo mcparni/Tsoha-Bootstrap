@@ -8,7 +8,8 @@ class PlayerController extends BaseController{
 	}
 	public static function urheilija($id){
 		$player = Player::find($id);
-		View::make('urheilijat/urheilija.html', array('player' => $player));
+		$results = Results::findAllByPlayer($id);
+		View::make('urheilijat/urheilija.html', array('player' => $player, 'results'=>$results));
 	}
 	public static function editPlayer($id){
 		$player = Player::find($id);
