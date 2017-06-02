@@ -17,7 +17,7 @@
   });
 
   $routes->post('/urheilijat', function() {
-    PlayerController::prosessoi();
+    PlayerController::store();
   });
 
   $routes->get('/urheilijat/uusi', function() {
@@ -26,6 +26,14 @@
 
   $routes->get('/urheilijat/:id', function($id){
     PlayerController::urheilija($id);
+  });
+
+  $routes->get('/urheilijat/:id/edit', function($id){
+    PlayerController::editPlayer($id);
+  });
+
+  $routes->post('/urheilijat/:id/edit', function($id){
+    PlayerController::update($id);
   });
 
   $routes->get('/tulokset', function() {

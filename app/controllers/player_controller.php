@@ -10,21 +10,38 @@ class PlayerController extends BaseController{
 		$player = Player::find($id);
 		View::make('urheilijat/urheilija.html', array('player' => $player));
 	}
+	public static function editPlayer($id){
+		$player = Player::find($id);
+		View::make('urheilijat/edit.html', array('player' => $player));
+	}
 	public static function uusi(){
 		View::make('urheilijat/uusi.html');
 	}
-	public static function prosessoi() {
+	public static function update($id) {
+		
+	    $params = $_POST;
+		$player = new Player(array(
+			'id' => $id,	
+	      	'name' => $params['name'],
+	      	'description' => $params['description']
+	    ));
+
+		$player->update();
+		Redirect::to('/urheilijat/' . $player->id, array('message' => 'Pelaajaa ' . $player->name . ' muokattu'));
+	}
+
+	public static function store() {
 		  
 	    $params = $_POST;
-	    $player = new Player(array(
+	    
+		$player = new Player(array(
 	      'name' => $params['name'],
 	      'description' => $params['description']
 	    ));
 
-	    $player->tallenna();
+		$player->tallenna();
+		Redirect::to('/urheilijat/' . $player->id, array('message' => 'Pelaaja on lisätty'));
 
-	    Redirect::to('/urheilijat/' . $player->id, array('message' => 'Pelaaja on lisätty'));
-  
 	}
 	
    

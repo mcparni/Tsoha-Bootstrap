@@ -42,13 +42,23 @@ class Player extends BaseModel{
 		return null;
 
 	}
+	
+	public function update() {
+		$query = DB::connection()->prepare('UPDATE PLAYER SET name=:name, description=:description WHERE id=:id RETURNING id');
+	    $query->execute(array('name' => $this->name, 'description' => $this->description, 'id' => $this->id ));
+	    $row = $query->fetch();
+	    Kint::trace();
+  		Kint::dump($row);
+		Kint::dump($this->id);
+		$this->id = $row['id'];
+	}
 
 	public function tallenna() {
 	    $query = DB::connection()->prepare('INSERT INTO Player (name, description) VALUES (:name, :description) RETURNING id');
 	    $query->execute(array('name' => $this->name, 'description' => $this->description));
 	    $row = $query->fetch();
-	    Kint::trace();
-  		Kint::dump($row);
+	    //Kint::trace();
+  		//Kint::dump($row);
 	    $this->id = $row['id'];
 	}
 	
