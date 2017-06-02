@@ -21,8 +21,8 @@ CREATE TABLE Sport (
 
 CREATE TABLE Results (
   id SERIAL PRIMARY KEY,
-  player_id INTEGER REFERENCES Player(id),
-  sport_id INTEGER REFERENCES Sport(id),
+  player_id INTEGER REFERENCES Player(id) ON DELETE CASCADE,
+  sport_id INTEGER REFERENCES Sport(id) ON DELETE CASCADE,
   result varchar(100),
   createdon DATE
 );
