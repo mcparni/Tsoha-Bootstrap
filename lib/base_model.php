@@ -1,28 +1,59 @@
 <?php
 
   class BaseModel{
-    // "protected"-attribuutti on käytössä vain luokan ja sen perivien luokkien sisällä
+
     protected $validators;
 
     public function __construct($attributes = null){
-      // Käydään assosiaatiolistan avaimet läpi
+
       foreach($attributes as $attribute => $value){
-        // Jos avaimen niminen attribuutti on olemassa...
+
         if(property_exists($this, $attribute)){
-          // ... lisätään avaimen nimiseen attribuuttin siihen liittyvä arvo
+
           $this->{$attribute} = $value;
+
         }
       }
     }
 
+    private function validate_string_length($field, $string, $length) {
+      if(strlen($string) < $length)
+        return $field . ' -kentän pituus täytyy olla vähintään '.$length.' merkkiä.';
+    }
+
+    private function validate_ID($id) {
+        if(!(is_numeric($id)))
+          return "Id virhe";
+    }
+
+    public function validate_description() {
+      return $this->validate_string_length("Kuvaus", $this->description, 10);
+    }
+
+    public function validate_player_description() {
+      return $this->validate_string_length("Kuvaus", $this->description, 5);
+    }
+
+    public function validate_name() {
+      return $this->validate_string_length("Nimi" , $this->name, 5);
+    }
+
+    public function validate_general_ID($id) {
+      return $this->validate_ID($id);
+    }
+
+    public function validate_player_ID() {
+      return $this->validate_ID($this->id);
+    }
+
     public function errors(){
-      // Lisätään $errors muuttujaan kaikki virheilmoitukset taulukkona
       $errors = array();
-
+      
       foreach($this->validators as $validator){
-        // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+          $error = $this->{$validator}();
+          if($error)
+            array_push($errors, $error);
       }
-
       return $errors;
     }
 

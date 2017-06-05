@@ -5,6 +5,7 @@ class Player extends BaseModel{
 	
 	public function __construct($attributes){
 		parent::__construct($attributes);
+		$this->validators = array('validate_name', 'validate_player_description');
 	}
 
 	public static function all(){

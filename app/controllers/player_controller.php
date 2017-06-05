@@ -31,27 +31,47 @@ class PlayerController extends BaseController{
 	public static function update($id) {
 		
 	    $params = $_POST;
-		$player = new Player(array(
-			'id' => $id,	
-	      	'name' => $params['name'],
-	      	'description' => $params['description']
-	    ));
 
-		$player->update();
-		Redirect::to('/players/' . $player->id, array('message' => 'Pelaajaa ' . $player->name . ' muokattu'));
+		$attributes = array(
+			'id' => $id,
+    		'name' => $params['name'],
+	    	'description' => $params['description']
+  		);
+
+		$player = new Player($attributes);
+
+		$errors = $player->errors();
+
+		if(count($errors) === 0) {
+			$player->update();
+			Redirect::to('/players/' . $player->id, array('message' => 'Pelaajaa ' . $player->name . ' muokattu'));
+		} else {
+			View::make('players/edit.html', array('errors'=>$errors, 'player' => $attributes));
+			
+		}
+
+		
 	}
 
 	public static function store() {
 		  
 	    $params = $_POST;
-	    
-		$player = new Player(array(
-	      'name' => $params['name'],
-	      'description' => $params['description']
-	    ));
 
-		$player->save();
-		Redirect::to('/players/' . $player->id, array('message' => 'Pelaaja on lisätty'));
+		$attributes = array(
+    		'name' => $params['name'],
+	    	'description' => $params['description']
+  		);
+	    
+		$player = new Player($attributes);
+		$errors = $player->errors();
+
+		if(count($errors) === 0) {
+			$player->save();
+			Redirect::to('/players/' . $player->id, array('message' => 'Pelaaja on lisätty'));
+		} else {
+			View::make('players/new.html', array('errors' => $errors, 'attributes' => $attributes));
+		}
+		
 
 	}
 	
