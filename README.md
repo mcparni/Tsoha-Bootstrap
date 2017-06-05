@@ -13,10 +13,10 @@ Dokumentaatio löytyy osoitteesta:
 
 ## HTML-sivut
 Etusivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus <br/>
-Urheilijat koontisivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/urheilijat <br/>
-Lajien koontisiuv: http://mcparni.users.cs.helsinki.fi/urheilusovellus/lajit <br/>
-Tulosten koontisivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/tulokset <br/>
-Kirjautumissivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/kirjaudu <br/>
+Urheilijat koontisivu: http://mcparni.users.cs.helsinki.fi/players/players <br/>
+Lajien koontisiuv: http://mcparni.users.cs.helsinki.fi/urheilusovellus/sports <br/>
+Tulosten koontisivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/results <br/>
+Kirjautumissivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/login <br/>
 
 ## Muokkaukset
 Sivujen ja tietokannan muokkaus tulee hyväksikäyttämään noita samoja sivuja.
