@@ -4,50 +4,50 @@
     HelloWorldController::index();
   });
 
-  $routes->get('/lajit', function() {
-    SportController::lajit();
+  $routes->get('/sports', function() {
+    SportController::sports();
   });
 
-  $routes->get('/lajit/:id', function($id){
-    SportController::laji($id);
+  $routes->get('/sports/:id', function($id){
+    SportController::sport($id);
   });
 
-  $routes->get('/urheilijat', function() {
-    PlayerController::urheilijat();
+  $routes->get('/players', function() {
+    PlayerController::players();
   });
 
-  $routes->post('/urheilijat', function() {
+  $routes->post('/players', function() {
     PlayerController::store();
   });
 
-  $routes->get('/urheilijat/uusi', function() {
-    PlayerController::uusi();
+  $routes->get('/players/new', function() {
+    PlayerController::new();
   });
 
-  $routes->get('/urheilijat/:id', function($id){
-    PlayerController::urheilija($id);
+  $routes->get('/players/:id', function($id){
+    PlayerController::player($id);
   });
 
-  $routes->get('/urheilijat/:id/edit', function($id){
+  $routes->get('/players/:id/edit', function($id){
     PlayerController::editPlayer($id);
   });
 
-  $routes->post('/urheilijat/:id/edit', function($id){
+  $routes->post('/players/:id/edit', function($id){
     PlayerController::update($id);
   });
 
-  $routes->post('/urheilijat/:id/remove', function($id){
+  $routes->post('/players/:id/remove', function($id){
     PlayerController::remove($id);
   });
 
-  $routes->get('/tulokset', function() {
-    ResultsController::tulokset();
+  $routes->get('/results', function() {
+    ResultsController::results();
   });
 
-  $routes->get('/kirjaudu', function() {
-    HelloWorldController::kirjaudu();
+  $routes->get('/login', function() {
+    HelloWorldController::login();
   });
 
-  $routes->get('/hiekkalaatikko', function() {
+  $routes->get('/sandbox', function() {
     HelloWorldController::sandbox();
   });

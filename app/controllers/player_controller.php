@@ -2,21 +2,21 @@
 
 class PlayerController extends BaseController{
 
-	public static function urheilijat(){
+	public static function players(){
 		$players = Player::all();
-		View::make('urheilijat/urheilijat.html', array('players' => $players));
+		View::make('players/players.html', array('players' => $players));
 	}
-	public static function urheilija($id){
+	public static function player($id){
 		$player = Player::find($id);
 		$results = Results::findAllByPlayer($id);
-		View::make('urheilijat/urheilija.html', array('player' => $player, 'results'=>$results));
+		View::make('players/player.html', array('player' => $player, 'results'=>$results));
 	}
 	public static function editPlayer($id){
 		$player = Player::find($id);
-		View::make('urheilijat/edit.html', array('player' => $player));
+		View::make('players/edit.html', array('player' => $player));
 	}
-	public static function uusi(){
-		View::make('urheilijat/uusi.html');
+	public static function new(){
+		View::make('players/new.html');
 	}
 	public static function remove($id) {
 		
@@ -26,7 +26,7 @@ class PlayerController extends BaseController{
 	    ));
 
 		$player->remove();
-		Redirect::to('/urheilijat', array('message' => 'Pelaaja poistettu'));
+		Redirect::to('/players', array('message' => 'Pelaaja poistettu'));
 	}
 	public static function update($id) {
 		
@@ -38,7 +38,7 @@ class PlayerController extends BaseController{
 	    ));
 
 		$player->update();
-		Redirect::to('/urheilijat/' . $player->id, array('message' => 'Pelaajaa ' . $player->name . ' muokattu'));
+		Redirect::to('/players/' . $player->id, array('message' => 'Pelaajaa ' . $player->name . ' muokattu'));
 	}
 
 	public static function store() {
@@ -50,8 +50,8 @@ class PlayerController extends BaseController{
 	      'description' => $params['description']
 	    ));
 
-		$player->tallenna();
-		Redirect::to('/urheilijat/' . $player->id, array('message' => 'Pelaaja on lisätty'));
+		$player->save();
+		Redirect::to('/players/' . $player->id, array('message' => 'Pelaaja on lisätty'));
 
 	}
 	

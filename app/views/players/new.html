@@ -2,7 +2,7 @@
 {% block content %}
   <h1>Lisää Urheilija</h1>
 
-  <form method="post" action="{{base_path}}/urheilijat">
+  <form method="post" action="{{base_path}}/players">
     <div class="form-group">
       <label>Nimi:</label>
       <input name="name" class="form-control" type="text">
@@ -15,7 +15,7 @@
 
     <div class="form-group">
       <input type="hidden" name="form_action" value="new">
-      <a href="{{base_path}}/urheilijat" class="btn btn-primary">Peruuta</a>
+      <a href="{{base_path}}/players" class="btn btn-primary">Peruuta</a>
       <button type="submit" class="btn btn-primary">Lisää</button>
     </div>
   </form>

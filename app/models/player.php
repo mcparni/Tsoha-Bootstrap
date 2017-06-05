@@ -60,7 +60,7 @@ class Player extends BaseModel{
 		$this->id = $row['id'];
 	}
 
-	public function tallenna() {
+	public function save() {
 	    $query = DB::connection()->prepare('INSERT INTO Player (name, description, createdon) VALUES (:name, :description, NOW()) RETURNING id');
 	    $query->execute(array('name' => $this->name, 'description' => $this->description));
 	    $row = $query->fetch();
