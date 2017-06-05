@@ -4,14 +4,14 @@ CREATE TABLE Admin (
   password varchar(50) NOT NULL
 );
 
-CREATE TABLE Player (
+CREATE TABLE Players (
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
   description varchar(500),
   createdon DATE
 );
 
-CREATE TABLE Sport (
+CREATE TABLE Sports (
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
   description varchar(500),
@@ -21,8 +21,8 @@ CREATE TABLE Sport (
 
 CREATE TABLE Results (
   id SERIAL PRIMARY KEY,
-  player_id INTEGER REFERENCES Player(id) ON DELETE CASCADE,
-  sport_id INTEGER REFERENCES Sport(id) ON DELETE CASCADE,
+  player_id INTEGER REFERENCES Players(id) ON DELETE CASCADE,
+  sport_id INTEGER REFERENCES Sports(id) ON DELETE CASCADE,
   result varchar(100),
   createdon DATE
 );
