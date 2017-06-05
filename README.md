@@ -13,7 +13,7 @@ Dokumentaatio löytyy osoitteesta:
 
 ## HTML-sivut
 Etusivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus <br/>
-Urheilijat koontisivu: http://mcparni.users.cs.helsinki.fi/players/players <br/>
+Urheilijat koontisivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/players <br/>
 Lajien koontisiuv: http://mcparni.users.cs.helsinki.fi/urheilusovellus/sports <br/>
 Tulosten koontisivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/results <br/>
 Kirjautumissivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/login <br/>
