@@ -8,7 +8,7 @@ class Player extends BaseModel{
 	}
 
 	public static function all(){
-	    $query = DB::connection()->prepare('SELECT * FROM Player');
+	    $query = DB::connection()->prepare('SELECT * FROM Players');
 	    $query->execute();
 	    $rows = $query->fetchAll();
 	    $players = array();
@@ -25,7 +25,7 @@ class Player extends BaseModel{
     	return $players;
   	}
 	public static function find($id){
-		$query = DB::connection()->prepare('SELECT * FROM Player WHERE id = :id LIMIT 1');
+		$query = DB::connection()->prepare('SELECT * FROM Players WHERE id = :id LIMIT 1');
 		$query->execute(array('id' => $id));
 		$row = $query->fetch();
 
@@ -44,14 +44,14 @@ class Player extends BaseModel{
 	}
 
 	public function remove() {
-		$query = DB::connection()->prepare('DELETE FROM Player WHERE id=:id RETURNING id');
+		$query = DB::connection()->prepare('DELETE FROM Players WHERE id=:id RETURNING id');
 	    $query->execute(array('id' => $this->id));
 	    $row = $query->fetch();
 		$this->id = $row['id'];
 	}
 	
 	public function update() {
-		$query = DB::connection()->prepare('UPDATE Player SET name=:name, description=:description WHERE id=:id RETURNING id');
+		$query = DB::connection()->prepare('UPDATE Players SET name=:name, description=:description WHERE id=:id RETURNING id');
 	    $query->execute(array('name' => $this->name, 'description' => $this->description, 'id' => $this->id ));
 	    $row = $query->fetch();
 	    //Kint::trace();
@@ -61,7 +61,7 @@ class Player extends BaseModel{
 	}
 
 	public function save() {
-	    $query = DB::connection()->prepare('INSERT INTO Player (name, description, createdon) VALUES (:name, :description, NOW()) RETURNING id');
+	    $query = DB::connection()->prepare('INSERT INTO Players (name, description, createdon) VALUES (:name, :description, NOW()) RETURNING id');
 	    $query->execute(array('name' => $this->name, 'description' => $this->description));
 	    $row = $query->fetch();
 	    //Kint::trace();
