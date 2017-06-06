@@ -8,3 +8,30 @@
   max-width: 1200px;
   margin: 0px auto;
 }
+
+
+button.logout {
+    border: none;
+    color: #777;
+    background-color: transparent;
+    line-height: 20px;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+
+@media (min-width: 768px) {
+  button.logout {
+      padding-top: 15px;
+      padding-bottom: 15px;
+  }
+}
+
+
+
+
+
+button.logout:hover,button.logout:focus {
+    color: #333;
+    background-color: transparent;
+}

@@ -1,22 +1,35 @@
 <?php
 
-class PlayerController extends BaseController{
+class PlayerController extends BaseController {
 
 	public static function players(){
 		$players = Player::all();
-		View::make('players/players.html', array('players' => $players));
+		$admin_controls = self::check_logged_in();
+		View::make('players/players.html', array('players' => $players, 'admin_controls' => $admin_controls ));
 	}
 	public static function player($id){
 		$player = Player::find($id);
 		$results = Results::findAllByPlayer($id);
-		View::make('players/player.html', array('player' => $player, 'results'=>$results));
+		$admin_controls = self::check_logged_in();		
+		View::make('players/player.html', array('player' => $player, 'results'=>$results, 'admin_controls' => $admin_controls));
 	}
 	public static function editPlayer($id){
 		$player = Player::find($id);
-		View::make('players/edit.html', array('player' => $player));
+		$admin_controls = self::check_logged_in();
+		if($admin_controls)
+			View::make('players/edit.html', array('player' => $player));
+		else
+			Redirect::to('/login', array('error' => 'Sinun täytyy ensiksi kirjautua sisään.'));
+
 	}
+	
 	public static function new(){
-		View::make('players/new.html');
+		$admin_controls = self::check_logged_in();
+		if($admin_controls)
+			View::make('players/new.html');
+		else
+			Redirect::to('/login', array('error' => 'Sinun täytyy ensiksi kirjautua sisään.'));
+		
 	}
 	public static function remove($id) {
 		
@@ -28,6 +41,7 @@ class PlayerController extends BaseController{
 		$player->remove();
 		Redirect::to('/players', array('message' => 'Pelaaja poistettu'));
 	}
+
 	public static function update($id) {
 		
 	    $params = $_POST;

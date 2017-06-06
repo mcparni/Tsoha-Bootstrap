@@ -4,6 +4,14 @@
 </form>
 {% endmacro %}
 
+{% macro logout_navi(action, text) %}
+<li>
+  <form method="post" action="{{action}}">
+    <button type="submit" class="logout">{{text|default('Kirjaudu ulos')}}</button>
+</form>
+</li>
+{% endmacro %}
+
 {% macro cancel_button(href, text) %}
 <a href="{{href}}" class="btn btn-primary">{{text|default('Peruuta')}}</a>
 {% endmacro %}

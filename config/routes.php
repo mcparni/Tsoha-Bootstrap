@@ -45,7 +45,14 @@
   });
 
   $routes->get('/login', function() {
-    UserController::login();
+    AdminController::login();
+  });
+
+  $routes->post('/login', function() {
+    AdminController::handleLogin();
+  });
+  $routes->post('/logout', function() {
+    AdminController::logout();
   });
 
   $routes->get('/sandbox', function() {
