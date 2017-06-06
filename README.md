@@ -18,6 +18,18 @@ Lajien koontisiuv: http://mcparni.users.cs.helsinki.fi/urheilusovellus/sports <b
 Tulosten koontisivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/results <br/>
 Kirjautumissivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/login <br/>
 
+## Sisäänkirjautuminen
+- Ensin kirjautumissivulle: http://mcparni.users.cs.helsinki.fi/urheilusovellus/login <br/>
+- Käyttäjätunnus: admintest
+- Salasana: admin_23
+
 ## Muokkaukset
-Sivujen ja tietokannan muokkaus tulee hyväksikäyttämään noita samoja sivuja.
+
+### Uusi urheilija
+http://mcparni.users.cs.helsinki.fi/urheilusovellus/players -sivulla voi poistaa tai mennä lomakkeelle, jossa luodaan uusi urheilija.
+### Urheilijan muokkaus
+http://mcparni.users.cs.helsinki.fi/urheilusovellus/players/1 -sivulta voi poistaa kyseisen urheilijan tai mennä lomakkeelle, jossa tietoja voi editoida
+
+## Uloskirjautuminen
+Päänavigaatiossa on linkki "Kirjaudu ulos" mikäli on kirjautuneena sisään. Sitä klikkaamalla kirjaudutaan ulos.
 
