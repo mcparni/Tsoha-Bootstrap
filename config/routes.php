@@ -1,7 +1,7 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    IndexController::index();
   });
 
   $routes->get('/sports', function() {
@@ -45,9 +45,9 @@
   });
 
   $routes->get('/login', function() {
-    HelloWorldController::login();
+    UserController::login();
   });
 
   $routes->get('/sandbox', function() {
-    HelloWorldController::sandbox();
+    SandBoxController::sandbox();
   });
