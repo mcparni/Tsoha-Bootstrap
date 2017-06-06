@@ -28,7 +28,7 @@ Kirjautumissivu: http://mcparni.users.cs.helsinki.fi/urheilusovellus/login <br/>
 ### Uusi urheilija
 http://mcparni.users.cs.helsinki.fi/urheilusovellus/players -sivulla voi poistaa tai mennä lomakkeelle, jossa luodaan uusi urheilija.
 ### Urheilijan muokkaus
-http://mcparni.users.cs.helsinki.fi/urheilusovellus/players/1 -sivulta voi poistaa kyseisen urheilijan tai mennä lomakkeelle, jossa tietoja voi editoida
+http://mcparni.users.cs.helsinki.fi/urheilusovellus/players/1 -sivulta voi poistaa kyseisen urheilijan tai mennä lomakkeelle, jossa tietoja voi editoida. Tämä edellyttää tosin että urlissa näkyvällä esimerkki-id:llä 1 löytyy urheilija.
 
 ## Uloskirjautuminen
 Päänavigaatiossa on linkki "Kirjaudu ulos" mikäli on kirjautuneena sisään. Sitä klikkaamalla kirjaudutaan ulos.
