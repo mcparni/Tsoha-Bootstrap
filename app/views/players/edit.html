@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "macros/forms.html" as forms %}
 {% block content %}
   <h1>Muokkaa urheilijaa: {{player.name}}</h1>
 
@@ -12,21 +13,14 @@
     </div>
   {% endif %}
 
-  <form method="post" action="{{base_path}}/players/{{player.id}}/edit">
-    <div class="form-group">
-      <label>Nimi:</label>
-      <input name="name" value="{{player.name}}" class="form-control" type="text">
-    </div>
-
-    <div class="form-group">
-      <label>Kuvaus:</label>
-      <input name="description" value="{{player.description}}" class="form-control" type="text">
-    </div>
-
-    <div class="form-group">
-      <input type="hidden" name="form_action" value="edit">
-      <a href="{{base_path}}/players/{{player.id}}" class="btn btn-primary">Peruuta</a>
-      <button type="submit" class="btn btn-primary">Tallenna</button>
-    </div>
-  </form>
+      {% set action = base_path ~ '/players/' ~ player.id ~ '/edit' %}
+      {% set nameval = player.name %}
+      {% set descval = player.description %}
+      {% set cancelurl = base_path ~ '/players/' ~ player.id %}
+      {% set canceltext = 'Peruuta' %}
+      {% set submittext = 'Tallenna' %}
+      {% set cancelbutton = forms.cancel_button(cancelurl, canceltext) %}
+      {% set submitbutton = forms.submit_button(submittext) %}
+      {{forms.sport_player_form(action, nameval, descval, cancelbutton, submitbutton)}}
+      
 {% endblock %}

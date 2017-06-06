@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% import "macros/forms.html" as forms %}
 {% block content %}
 	{% if message %}
 	<div class="alert alert-success">
@@ -10,10 +10,7 @@
 	<div class="page-header">
 		<h1>{{player.name}}</h1>
 		<a class="btn btn-success" href="{{base_path}}/players/{{player.id}}/edit">Muokkaa</a>
-		
-		<form method="post" action="{{base_path}}/players/{{player.id}}/remove">
-			<button type="submit" class="btn btn-danger">Poista</button>
-		</form>
+		{{forms.remove_button("#{base_path}/players/#{player.id}/remove")}}
 	</div>
 
 	<div class="content">

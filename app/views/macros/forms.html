@@ -1,0 +1,33 @@
+{% macro remove_button(action, text) %}
+<form method="post" action="{{action}}">
+    <button type="submit" class="btn btn-danger">{{text|default('Poista')}}</button>
+</form>
+{% endmacro %}
+
+{% macro cancel_button(href, text) %}
+<a href="{{href}}" class="btn btn-primary">{{text|default('Peruuta')}}</a>
+{% endmacro %}
+
+{% macro submit_button(text) %}
+<button type="submit" class="btn btn-primary">{{text|default('Tallenna')}}</button>
+{% endmacro %}
+
+
+{% macro sport_player_form(action, nameval, descval, cancelbutton, submitbutton) %}
+<form method="post" action="{{action}}">
+    <div class="form-group">
+      <label>Nimi:</label>
+      <input name="name" value="{{nameval}}" class="form-control" type="text">
+    </div>
+
+    <div class="form-group">
+      <label>Kuvaus:</label>
+      <input name="description" value="{{descval}}" class="form-control" type="text">
+    </div>
+
+    <div class="form-group">
+        {{cancelbutton}}
+        {{submitbutton}}
+    </div>
+  </form>
+{% endmacro %}
