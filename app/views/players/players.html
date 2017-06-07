@@ -1,18 +1,16 @@
 {% extends "base.html" %}
-
+{% import "macros/messages.html" as messages %}
 {% block content %}
 	
 	{% if message %}
-	<div class="alert alert-success">
-		{{message}}
-	</div>
+		{{messages.success_message_single("#{message}")}}
 	{% endif %}
 
 	<div class="page-header">
 		<h1>Urheilijat</h1>
 		{% if admin_controls %}
 		<a class="btn btn-success" href="{{base_path}}/players/new">Lisää uusi</a>
-		{{forms.remove_button("#{base_path}/players/#{player.id}/remove")}}
+		
 		{% endif %}
 		
 	</div>

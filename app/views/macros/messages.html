@@ -1,0 +1,32 @@
+
+{% macro success_message_single(message) %}
+<div class="alert alert-success">
+	{{message}}
+</div>
+{% endmacro %}
+
+{% macro success_message_multi(messages) %}
+<div class="alert alert-success">
+    <ul>
+    {% for message in messages %}
+        <li>{{message}}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endmacro %}
+
+{% macro error_message_single(message) %}
+<div class="alert alert-danger">
+    <p>{{message}}</p>
+</div>
+{% endmacro %}
+
+{% macro error_message_multi(messages) %}
+<div class="alert alert-danger">
+    <ul>
+    {% for message in messages %}
+        <li>{{message}}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endmacro %}

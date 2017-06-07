@@ -1,10 +1,9 @@
 {% extends "base.html" %}
+{% import "macros/messages.html" as messages %}
 
 {% block content %}
   {% if message %}
-	<div class="alert alert-success">
-		{{message}}
-	</div>
+		{{messages.success_message_single("#{message}")}}
 	{% endif %}
   
   <div class="page-header">
