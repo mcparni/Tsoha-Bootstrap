@@ -16,8 +16,12 @@
 <a href="{{href}}" class="btn btn-primary">{{text|default('Peruuta')}}</a>
 {% endmacro %}
 
+{% macro edit_button(href, text) %}
+<a class="btn btn-success" href="{{href}}">{{text|default('Muokkaa')}}</a>
+{% endmacro %}
+
 {% macro submit_button(text) %}
-<button type="submit" class="btn btn-primary">{{text|default('Tallenna')}}</button>
+<button type="submit" class="btn btn-success">{{text|default('Tallenna')}}</button>
 {% endmacro %}
 
 
