@@ -6,9 +6,10 @@ class SandBoxController extends BaseController {
     	//$sports = Sport::all();
     	//Kint::dump($sports);
     	//Kint::dump($tikka);
-		 $test = new Player(array(
-			'name' => 'pla',
-			'description' => 'tsest!'
+		 $test = new Sport(array(
+			'name' => 'plaasdasda',
+			'description' => 'tsesdasdasdasdt!',
+			'sort_order' => 1
 		));
 		$errors = $test->errors();
 

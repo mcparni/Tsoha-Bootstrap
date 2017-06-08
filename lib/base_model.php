@@ -30,6 +30,16 @@
       return $this->validate_string_length("Kuvaus", $this->description, 10);
     }
 
+    public function validate_sport_sort() {
+      $order = $this->sort_order;
+      $order = (int) $order;
+      if($order === 1 || $order === 0)
+        return null;
+      else
+        return "Väärä tulosjärjestys.";
+
+    }
+
     public function validate_player_description() {
       return $this->validate_string_length("Kuvaus", $this->description, 5);
     }

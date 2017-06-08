@@ -7,9 +7,29 @@
   $routes->get('/sports', function() {
     SportController::sports();
   });
+  
+  $routes->post('/sports', function() {
+    SportController::store();
+  });
+
+  $routes->get('/sports/new', function() {
+    SportController::new();
+  });
 
   $routes->get('/sports/:id', function($id){
     SportController::sport($id);
+  });
+
+  $routes->get('/sports/:id/edit', function($id){
+    SportController::editSport($id);
+  });
+
+  $routes->post('/sports/:id/edit', function($id){
+    SportController::update($id);
+  });
+
+  $routes->post('/sports/:id/remove', function($id){
+    SportController::remove($id);
   });
 
   $routes->get('/players', function() {

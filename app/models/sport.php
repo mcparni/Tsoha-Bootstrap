@@ -5,6 +5,7 @@ class Sport extends BaseModel{
 	
 	public function __construct($attributes){
 		parent::__construct($attributes);
+		$this->validators = array('validate_name', 'validate_description','validate_sport_sort');
 	}
 
 	public static function all(){
@@ -43,6 +44,26 @@ class Sport extends BaseModel{
 
 		return null;
 
+	}
+	public function remove() {
+		$query = DB::connection()->prepare('DELETE FROM Sports WHERE id=:id RETURNING id');
+	    $query->execute(array('id' => $this->id));
+	    $row = $query->fetch();
+		$this->id = $row['id'];
+	}
+	
+	public function update() {
+		$query = DB::connection()->prepare('UPDATE Sports SET name=:name, description=:description, sort_order=:sort_order WHERE id=:id RETURNING id');
+	    $query->execute(array('name' => $this->name, 'description' => $this->description,'sort_order'=> $this->sort_order, 'id' => $this->id ));
+	    $row = $query->fetch();
+		$this->id = $row['id'];
+	}
+
+	public function save() {
+	    $query = DB::connection()->prepare('INSERT INTO Sports (name, description, sort_order, createdon) VALUES (:name, :description, :sort_order, NOW()) RETURNING id');
+	    $query->execute(array('name' => $this->name, 'description' => $this->description,'sort_order'=> $this->sort_order));
+	    $row = $query->fetch();
+	    $this->id = $row['id'];
 	}
 	
 

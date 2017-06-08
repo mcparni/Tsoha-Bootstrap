@@ -2,20 +2,21 @@
 {% import "macros/forms.html" as forms %}
 {% import "macros/messages.html" as messages %}
 {% block content %}
-  <h1>Lisää Urheilija</h1>
+  <h1>Lisää Laji</h1>
 
   {% if errors %}
 	  {{messages.error_message_multi(errors)}}
   {% endif %}
 
-  {% set action = base_path ~ '/players' %}
+  {% set action = base_path ~ '/sports' %}
   {% set nameval = attributes.name %}
   {% set descval = attributes.description %}
-  {% set cancelurl = base_path ~ '/players' %}
+  {% set sort = attributes.sort_order %}
+  {% set cancelurl = base_path ~ '/sports' %}
   {% set canceltext = 'Peruuta' %}
   {% set submittext = 'Lisää' %}
   {% set cancelbutton = forms.cancel_button(cancelurl, canceltext) %}
   {% set submitbutton = forms.submit_button(submittext) %}
-  {{forms.player_form(action, nameval, descval, cancelbutton, submitbutton)}}
+  {{forms.sport_form(action, nameval, descval, sort, cancelbutton, submitbutton)}}
 
 {% endblock %}

@@ -8,7 +8,7 @@
 <li>
   <form method="post" action="{{action}}">
     <button type="submit" class="logout">{{text|default('Kirjaudu ulos')}}</button>
-</form>
+  </form>
 </li>
 {% endmacro %}
 
@@ -20,12 +20,16 @@
 <a class="btn btn-success" href="{{href}}">{{text|default('Muokkaa')}}</a>
 {% endmacro %}
 
+{% macro new_button(href, text) %}
+<a class="btn btn-success" href="{{href}}">{{text|default('Lisää uusi')}}</a>
+{% endmacro %}
+
 {% macro submit_button(text) %}
 <button type="submit" class="btn btn-success">{{text|default('Tallenna')}}</button>
 {% endmacro %}
 
 
-{% macro sport_player_form(action, nameval, descval, cancelbutton, submitbutton) %}
+{% macro player_form(action, nameval, descval, cancelbutton, submitbutton) %}
 <form method="post" action="{{action}}">
     <div class="form-group">
       <label>Nimi:</label>
@@ -35,6 +39,33 @@
     <div class="form-group">
       <label>Kuvaus:</label>
       <input name="description" value="{{descval}}" class="form-control" type="text">
+    </div>
+
+    <div class="form-group">
+        {{cancelbutton}}
+        {{submitbutton}}
+    </div>
+  </form>
+{% endmacro %}
+
+{% macro sport_form(action, nameval, descval, sort, cancelbutton, submitbutton) %}
+<form method="post" action="{{action}}">
+    <div class="form-group">
+      <label>Nimi:</label>
+      <input name="name" value="{{nameval}}" class="form-control" type="text">
+    </div>
+
+    <div class="form-group">
+      <label>Kuvaus (esim. säännöt):</label>
+      <input name="description" value="{{descval}}" class="form-control" type="text">
+    </div>
+
+    <div class="form-group">
+      <label>Tulosjärjestys:</label>
+      <select name="sort_order">
+          <option value="1" {% if sort == 1 %} selected="selected" {% endif %}>Laskeva</option>
+          <option value="0" {% if sort == 0 %} selected="selected" {% endif %}>Nouseva</option>
+      </select>
     </div>
 
     <div class="form-group">

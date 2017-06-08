@@ -2,20 +2,21 @@
 {% import "macros/forms.html" as forms %}
 {% import "macros/messages.html" as messages %}
 {% block content %}
-  <h1>Muokkaa urheilijaa: {{player.name}}</h1>
+  <h1>Muokkaa lajia: {{sport.name}}</h1>
 
     {% if errors %}
 	    {{messages.error_message_multi(errors)}}
     {% endif %}
 
-      {% set action = base_path ~ '/players/' ~ player.id ~ '/edit' %}
-      {% set nameval = player.name %}
-      {% set descval = player.description %}
-      {% set cancelurl = base_path ~ '/players/' ~ player.id %}
+      {% set action = base_path ~ '/sports/' ~ sport.id ~ '/edit' %}
+      {% set nameval = sport.name %}
+      {% set descval = sport.description %}
+      {% set sort = sport.sort_order %}
+      {% set cancelurl = base_path ~ '/sports/' ~ sport.id %}
       {% set canceltext = 'Peruuta' %}
       {% set submittext = 'Tallenna' %}
       {% set cancelbutton = forms.cancel_button(cancelurl, canceltext) %}
       {% set submitbutton = forms.submit_button(submittext) %}
-      {{forms.player_form(action, nameval, descval, cancelbutton, submitbutton)}}
+      {{forms.sport_form(action, nameval, descval, sort, cancelbutton, submitbutton)}}
       
 {% endblock %}

@@ -53,7 +53,8 @@ class Results extends BaseModel{
 	}
 
 	public static function findAllBySport($id){
-		$query = DB::connection()->prepare('SELECT a.result, a.createdon, a.player_id, a.sport_id, b.name AS player_name, c.name AS sport_name FROM Results a, Players b, Sports c WHERE a.player_id = b.id AND a.sport_id = c.id AND c.id = :id');
+
+		$query = DB::connection()->prepare('SELECT a.result, a.createdon, a.player_id, a.sport_id, b.name AS player_name, c.sort_order , c.name AS sport_name FROM Results a, Players b, Sports c WHERE a.player_id = b.id AND a.sport_id = c.id AND c.id = :id ORDER BY CASE c.sort_order = 1 WHEN TRUE THEN result END DESC, CASE c.sort_order = 1 WHEN FALSE THEN result END ASC');
 		$query->execute(array('id' => $id));
 		$rows = $query->fetchAll();
 
