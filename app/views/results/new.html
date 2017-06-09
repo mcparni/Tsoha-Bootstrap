@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% import "macros/forms.html" as forms %}
+{% import "macros/messages.html" as messages %}
+{% import "macros/result_tables.html" as result_tables %}
+{% block content %}
+  <h1>Lisää Tulos</h1>
+
+  {% if errors %}
+	  {{messages.error_message_multi(errors)}}
+  {% endif %}
+
+  <div class="content">
+	<table class="table table-striped table-bordered ng-scope">
+	<thead>
+		<tr>
+			
+			<th>Pelaaja</th>
+      <th>Laji</th>
+      <th>Tulos</th>
+      <th></th>
+      <th></th>
+			
+		</tr>
+	</thead>
+	<tbody>
+    {% set action = base_path ~ '/results' %}
+    {% set cancelurl = base_path ~ '/results' %}
+    <form method="post" action="{{action}}">
+    <tr>
+		<td>
+      <select name="player_id">
+        {% for player in players %}
+          <option value="{{player.id}}">{{player.name}}</option>
+        {% endfor %}
+      </select>
+    </td>
+		<td>
+      <select name="sport_id">
+        {% for sport in sports %}
+          <option value="{{sport.id}}">{{sport.name}}</option>
+        {% endfor %}
+      </select>
+    </td>
+		<td><input name="result" value="{{attributes.result}}" class="form-control" type="text"></td>
+    <td>{{forms.cancel_button()}}</td>
+    <td>{{forms.submit_button()}}</td>
+ 
+      
+
+	</tr>
+    </form>
+  		</tbody>
+	</table>
+</div>
+
+
+
+{% endblock %}

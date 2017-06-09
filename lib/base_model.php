@@ -52,6 +52,26 @@
       return $this->validate_ID($id);
     }
 
+    public function validate_result() {
+      return $this->validate_string_length("Tulos", $this->result, 1);
+    }
+
+    public function validate_sport() {
+      $sport = Sport::find((int) $this->sport_id);
+      if($sport)
+        return null;
+      else
+        return "Lajia ei löydy";
+    }
+
+    public function validate_player() {
+      $player = Player::find((int) $this->player_id);
+      if($player)
+        return null;
+      else
+        return "Pelaajaa ei löydy";
+    }
+
     public function validate_player_ID() {
       return $this->validate_ID($this->id);
     }

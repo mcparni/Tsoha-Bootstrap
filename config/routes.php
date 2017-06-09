@@ -60,8 +60,16 @@
     PlayerController::remove($id);
   });
 
+  $routes->get('/results/new', function() {
+    ResultsController::new();
+  });
+
   $routes->get('/results', function() {
     ResultsController::results();
+  });
+
+  $routes->post('/results', function() {
+    ResultsController::store();
   });
 
   $routes->get('/login', function() {

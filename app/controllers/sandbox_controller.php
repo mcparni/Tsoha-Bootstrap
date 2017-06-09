@@ -13,7 +13,7 @@ class SandBoxController extends BaseController {
 		));
 		$errors = $test->errors();*/
 
-		$results = Results::allByTitle();
+		/*$results = Results::allByTitle();
 
 		if($results) {
 			foreach($results as $section) {
@@ -22,7 +22,17 @@ class SandBoxController extends BaseController {
 					echo $result->player_name . "\t" . $result->result . "<br>";
 				}
 			}
-		}
+		}*/
+		$result = new Results(array(
+			'id' => 2
+		));
+		Kint::dump($result);
+		$errors = $result->errors();
+		Kint::dump($errors);
+		$res = Results::find(1);
+    	
+    	Kint::dump($res);
+
   
 	}
 }
