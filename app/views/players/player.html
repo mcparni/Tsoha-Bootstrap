@@ -25,7 +25,10 @@
 </div>
 
 {% if results %}
-	{{result_tables.resultsByPlayer(base_path, results)}}
+  	{% set tableheadings = ["Laji", "Tulos", "Saavutettu"] %}
+    {{result_tables.resultsHead("Tulokset eri lajeissa", tableheadings)}}
+    {{result_tables.resultsBodySport(base_path, results)}}
+    {{result_tables.resultsFooter()}}
 {% endif %}
 
 {% endblock %}
