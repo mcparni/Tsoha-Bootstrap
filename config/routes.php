@@ -72,6 +72,18 @@
     ResultsController::store();
   });
 
+  $routes->get('/results/:id/edit', function($id){
+    ResultsController::editResult($id);
+  });
+
+  $routes->post('/results/:id/edit', function($id){
+    ResultsController::update($id);
+  });
+
+  $routes->post('/results/:id/remove', function($id){
+    ResultsController::remove($id);
+  });
+
   $routes->get('/login', function() {
     AdminController::login();
   });

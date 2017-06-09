@@ -3,7 +3,7 @@
 {% import "macros/messages.html" as messages %}
 {% import "macros/result_tables.html" as result_tables %}
 {% block content %}
-  <h1>Lisää Tulos</h1>
+  <h1>Muokkaa tulosta</h1>
 
   {% if errors %}
 	  {{messages.error_message_multi(errors)}}
@@ -17,13 +17,14 @@
 			<th>Pelaaja</th>
       <th>Laji</th>
       <th>Tulos</th>
+      <th>Saavutettu</th>
       <th></th>
       <th></th>
 			
 		</tr>
 	</thead>
 	<tbody>
-    {% set action = base_path ~ '/results' %}
+    {% set action = base_path ~ '/results/' ~ attributes.id ~ '/edit' %}
     {% set cancelurl = base_path ~ '/results' %}
     <form method="post" action="{{action}}">
     <tr>
@@ -42,6 +43,7 @@
       </select>
     </td>
 		<td><input name="result" value="{{attributes.result}}" class="form-control" type="text"></td>
+    <td><input name="createdon" value="{{attributes.createdon}}" class="form-control" type="text"></td>
     <td>{{forms.cancel_button(cancelurl)}}</td>
     <td>{{forms.submit_button()}}</td>
  

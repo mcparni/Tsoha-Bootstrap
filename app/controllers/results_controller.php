@@ -10,12 +10,12 @@ class ResultsController extends BaseController{
 	}
 
 	public static function editResult($id){
-		$result = Results::find($id);
+		$attributes = Results::find($id);
 		$players = Player::all();
 		$sports = Sport::all();
 		$admin_controls = self::check_logged_in();
 		if($admin_controls)
-			View::make('results/edit.html', array('result' => $result,'sports' => $sports, 'players' => $players));
+			View::make('results/edit.html', array('attributes' => $attributes,'sports' => $sports, 'players' => $players));
 		else
 			Redirect::to('/login', array('error' => 'Sinun täytyy ensiksi kirjautua sisään.'));
 
@@ -46,6 +46,9 @@ class ResultsController extends BaseController{
 		
 	    $params = $_POST;
 
+		$players = Player::all();
+		$sports = Sport::all();
+
 		$attributes = array(
 			'id' => $id,
     		'player_id' => $params['player_id'],
@@ -62,7 +65,7 @@ class ResultsController extends BaseController{
 			$result->update();
 			Redirect::to('/sports/' . $result->sport_id, array('message' => 'Tulosta muokattu'));
 		} else {
-			View::make('results/edit.html', array('errors'=>$errors, 'results' => $attributes));
+			View::make('results/edit.html', array('errors'=>$errors, 'results' => $attributes, 'sports' => $sports, 'players' => $players));
 			
 		}
 
@@ -78,6 +81,9 @@ class ResultsController extends BaseController{
 	    	'sport_id' => $params['sport_id'],
 			'result' => $params['result']
   		);
+
+		$players = Player::all();
+		$sports = Sport::all();
 	    
 		$result = new Results($attributes);
 		$errors = $result->errors();
@@ -86,7 +92,7 @@ class ResultsController extends BaseController{
 			$result->save();
 			Redirect::to('/sports/' . $result->sport_id, array('message' => 'Tulos on lisätty'));
 		} else {
-			View::make('results/new.html', array('errors' => $errors, 'attributes' => $attributes));
+			View::make('results/new.html', array('errors' => $errors, 'attributes' => $attributes, 'sports' => $sports, 'players' => $players));
 		}
 		
 
