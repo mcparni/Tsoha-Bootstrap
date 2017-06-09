@@ -9,7 +9,9 @@
   {% set tableheadings = ["Urheilija", "Tulos", "Saavutettu"] %}
   {% for section in results %}
     {{result_tables.resultsHead(section[0].sport_name, tableheadings)}}
-    {{result_tables.resultsBodyPlayers(base_path, section)}}
+    {% for result in section %}
+      {{result_tables.resultsBodyPlayers(base_path, result)}}
+    {% endfor %}
     {{result_tables.resultsFooter()}}
   {% endfor %}
 {% endif %}

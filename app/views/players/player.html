@@ -27,7 +27,9 @@
 {% if results %}
   	{% set tableheadings = ["Laji", "Tulos", "Saavutettu"] %}
     {{result_tables.resultsHead("Tulokset eri lajeissa", tableheadings)}}
-    {{result_tables.resultsBodySport(base_path, results)}}
+	{% for result in results %}
+    	{{result_tables.resultsBodySport(base_path, result)}}
+	{% endfor %}
     {{result_tables.resultsFooter()}}
 {% endif %}
 

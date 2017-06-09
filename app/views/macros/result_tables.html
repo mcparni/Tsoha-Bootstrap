@@ -12,16 +12,19 @@
 	<tbody>
 {% endmacro %}
 
-{% macro resultsBodyPlayers(path, results) %}
-	{% for result in results %}
+{% macro resultsBodyPlayers(path, result, admintools) %}
  	<tr>
 		<td>
 			<a href="{{path}}/players/{{result.player_id}}">{{result.player_name}}</a>
 		</td>
 		<td>{{result.result}}</td>
 		<td>{{result.createdon}}</td>
+		{% if admintools %}
+			{% for tool in admintools %}
+			<td>{{tool}}</td>
+			{% endfor %}
+		{% endif %}
 	</tr>
-	{% endfor %}
 {% endmacro %}
 
 {% macro resultsFooter() %}
@@ -30,8 +33,7 @@
 </div>
 {% endmacro %}
 
-{% macro resultsBodySport(path, results) %}
- 	{% for result in results %}
+{% macro resultsBodySport(path, result) %}
  	<tr>
 		<td>
 			<a href="{{path}}/sports/{{result.sport_id}}">{{result.sport_name}}</a>
@@ -39,5 +41,4 @@
 		<td>{{result.result}}</td>
 		<td>{{result.createdon}}</td>
 	</tr>
-	{% endfor %}
 {% endmacro %}
