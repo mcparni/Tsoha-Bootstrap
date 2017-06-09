@@ -6,13 +6,23 @@ class SandBoxController extends BaseController {
     	//$sports = Sport::all();
     	//Kint::dump($sports);
     	//Kint::dump($tikka);
-		 $test = new Sport(array(
+		/* $test = new Sport(array(
 			'name' => 'plaasdasda',
 			'description' => 'tsesdasdasdasdt!',
 			'sort_order' => 1
 		));
-		$errors = $test->errors();
+		$errors = $test->errors();*/
 
-		Kint::dump($errors);
+		$results = Results::allByTitle();
+
+		if($results) {
+			foreach($results as $section) {
+				echo $section[0]->sport_name . "<br>";
+				foreach($section as $result) {	
+					echo $result->player_name . "\t" . $result->result . "<br>";
+				}
+			}
+		}
+  
 	}
 }
