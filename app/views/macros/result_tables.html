@@ -33,12 +33,17 @@
 </div>
 {% endmacro %}
 
-{% macro resultsBodySport(path, result) %}
- 	<tr>
+{% macro resultsBodySport(path, result, admintools) %}
+	<tr>
 		<td>
 			<a href="{{path}}/sports/{{result.sport_id}}">{{result.sport_name}}</a>
 		</td>
 		<td>{{result.result}}</td>
 		<td>{{result.createdon}}</td>
+		{% if admintools %}
+			{% for tool in admintools %}
+			<td>{{tool}}</td>
+			{% endfor %}
+		{% endif %}
 	</tr>
 {% endmacro %}

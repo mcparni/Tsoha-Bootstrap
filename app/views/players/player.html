@@ -25,12 +25,32 @@
 </div>
 
 {% if results %}
-  	{% set tableheadings = ["Laji", "Tulos", "Saavutettu"] %}
-    {{result_tables.resultsHead("Tulokset eri lajeissa", tableheadings)}}
-	{% for result in results %}
-    	{{result_tables.resultsBodySport(base_path, result)}}
+
+	{% if admin_controls %}
+		{% set tableheadings = ["Urheilija", "Tulos", "Saavutettu", "", ""] %}
+	{% else %}
+  		{% set tableheadings = ["Urheilija", "Tulos", "Saavutettu"] %}
+	{% endif %}
+		
+	{{result_tables.resultsHead("Tulokset eri lajeissa", tableheadings)}}
+
+    {% for result in results %}
+
+		{% if admin_controls %}
+			{% set editbutton = forms.edit_button("#{base_path}/results/#{result.id}/edit")  %}
+			{% set removebutton = forms.remove_button("#{base_path}/results/#{result.id}/remove")  %}
+			{% set admintools = [editbutton, removebutton] %}
+		{% else %}
+			{% set admintools = null %}
+		{% endif %}
+		
+		{{result_tables.resultsBodySport(base_path, result, admintools)}}
+
 	{% endfor %}
+
     {{result_tables.resultsFooter()}}
+
 {% endif %}
+
 
 {% endblock %}

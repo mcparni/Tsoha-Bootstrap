@@ -16,14 +16,27 @@
 </div>
 
 {% if results %}
-  {% set tableheadings = ["Urheilija", "Tulos", "Saavutettu"] %}
-  {% for section in results %}
-    {{result_tables.resultsHead(section[0].sport_name, tableheadings)}}
-    {% for result in section %}
-      {{result_tables.resultsBodyPlayers(base_path, result)}}
-    {% endfor %}
-    {{result_tables.resultsFooter()}}
-  {% endfor %}
+
+  	{% if admin_controls %}
+		{% set tableheadings = ["Urheilija", "Tulos", "Saavutettu", "", ""] %}
+	{% else %}
+  		{% set tableheadings = ["Urheilija", "Tulos", "Saavutettu"] %}
+	{% endif %}
+
+  	{% for section in results %}
+		{{result_tables.resultsHead(section[0].sport_name, tableheadings)}}
+		{% for result in section %}
+	  		{% if admin_controls %}
+				{% set editbutton = forms.edit_button("#{base_path}/results/#{result.id}/edit")  %}
+				{% set removebutton = forms.remove_button("#{base_path}/results/#{result.id}/remove")  %}
+				{% set admintools = [editbutton, removebutton] %}
+	  		{% else %}
+				{% set admintools = null %}
+	  		{% endif %}
+	  		{{result_tables.resultsBodyPlayers(base_path, result, admintools)}}
+		{% endfor %}
+		{{result_tables.resultsFooter()}}
+  	{% endfor %}
 {% endif %}
 
 {% endblock %}
