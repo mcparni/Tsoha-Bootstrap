@@ -1,4 +1,3 @@
 .DS_Store
 .vscode
-local_bootstrap.sh
 local_deploy.sh
