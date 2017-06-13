@@ -6,7 +6,6 @@
         // Haetaan tietokantakonfiguraatio
         $connection_config = DatabaseConfig::connection_config();
         $config = $connection_config['config'];
-
         try {
             // Alustetaan PDO
             if(isset($config['username'])){

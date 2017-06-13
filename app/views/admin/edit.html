@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "macros/forms.html" as forms %}
+{% import "macros/messages.html" as messages %}
+{% block content %}
+  <h1>Muokkaa hallintatietoja</h1>
+
+    {% if errors %}
+	    {{messages.error_message_multi(errors)}}
+    {% endif %}
+
+    {% if message %}
+	    {{messages.success_message_single("#{message}")}}
+    {% endif %}
+
+      {% set action = base_path ~ '/admin/' ~ admin.id ~ '/edit' %}
+      {% set nameval = admin.name %}
+      {% set cancelurl = base_path %}
+      {% set canceltext = 'Peruuta' %}
+      {% set submittext = 'Tallenna' %}
+      {% set n_passval_1 = admin.n_password_1 %}
+      {% set n_passval_2 = admin.n_password_2 %}
+      {% set cancelbutton = forms.cancel_button(cancelurl, canceltext) %}
+      {% set submitbutton = forms.submit_button(submittext) %}
+      {{forms.admin_form(action, nameval, cancelbutton, submitbutton, n_passval_1, n_passval_2)}}
+      
+{% endblock %}

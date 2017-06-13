@@ -95,6 +95,14 @@
     AdminController::logout();
   });
 
+  $routes->get('/admin/:id/edit', function($id){
+    AdminController::editAdmin($id);
+  });
+
+  $routes->post('/admin/:id/edit', function($id){
+    AdminController::update($id);
+  });
+
   $routes->get('/sandbox', function() {
     SandBoxController::sandbox();
   });

@@ -1,11 +1,21 @@
 <?php
 
 class Admin extends BaseModel {
-    public $id, $name, $password;
+    public $id, $name, $password, $n_password_1, $n_password_2, $oldname, $oldpassword;
     
     public function __construct($attributes){
 		parent::__construct($attributes);
-		//$this->validators = array('');
+		$validators = array('validate_name');
+
+		if(array_key_exists ('validator_case' , $attributes )) {
+			if($attributes["validator_case"] == 1) {
+				array_push($validators, "validate_new_password_length", "validate_new_password2_length", "validate_new_password_match", "validate_old_password_match");
+			}
+			if($attributes["validator_case"] == 2) {
+				array_push($validators, "validate_admin_name_change");
+			}
+		}
+		$this->validators = $validators;
 	}
 
     public static function authenticate($username, $password){
@@ -33,7 +43,8 @@ class Admin extends BaseModel {
 		if($row){
 			$admin = new Admin(array(
 				'id' => $row['id'],
-				'name' => $row['name']
+				'name' => $row['name'],
+				'password' => $row['password']
 			));
 			return $admin;
 		}

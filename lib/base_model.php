@@ -48,6 +48,41 @@
       return $this->validate_string_length("Nimi" , $this->name, 5);
     }
 
+    public function validate_password_length() {
+      return $this->validate_string_length("Salasana" , $this->password, 8);
+    }
+
+    public function validate_new_password_length() {
+      return $this->validate_string_length("Uusi salasana" , $this->n_password_1, 8);
+    }
+
+    public function validate_new_password2_length() {
+      return $this->validate_string_length("Uusi salasana uudestaan" , $this->n_password_2, 8);
+    }
+
+    public function validate_admin_name_change() {
+      if($this->name != $this->oldname && $this->password != $this->oldpassword)
+        return "Salasana ei täsmää.";
+      else
+        return null;
+    }
+
+    public function validate_new_password_match() {
+        if($this->n_password_1 != $this->n_password_2)
+          return "Uudet salasanat eivät täsmää.";
+        else
+          return null;
+
+    }
+
+    public function validate_old_password_match() {
+        if($this->password != $this->oldpassword)
+          return "Vanha salasana ei täsmää.";
+        else
+          return null;
+
+    }
+
     public function validate_general_ID($id) {
       return $this->validate_ID($id);
     }
@@ -78,9 +113,9 @@
 
     public function errors(){
       $errors = array();
-      
       foreach($this->validators as $validator){
-          $error = $this->{$validator}();
+          
+          $error =$this->{$validator}();
           if($error)
             array_push($errors, $error);
       }
