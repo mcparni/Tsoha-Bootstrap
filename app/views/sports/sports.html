@@ -10,7 +10,8 @@
 <div class="page-header">
 	<h1>Lajit</h1>
 	{% if admin_controls %}
-		{{forms.new_button("#{base_path}/sports/new")}}
+		{{forms.new_button("#{base_path}/sports/new", "Lisää laji")}}
+		{{forms.new_button("#{base_path}/results/new", "Lisää tulos")}}
 	{% endif %}
 </div>
 

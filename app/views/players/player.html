@@ -11,8 +11,8 @@
 <div class="page-header">
 	<h1>{{player.name}}</h1>
 	{% if admin_controls %}
-		{{forms.edit_button("#{base_path}/players/#{player.id}/edit")}}
-		{{forms.remove_button("#{base_path}/players/#{player.id}/remove")}}
+		{{forms.edit_button("#{base_path}/players/#{player.id}/edit", "Muokkaa urheilijaa")}}
+		{{forms.remove_button("#{base_path}/players/#{player.id}/remove", "Poista urheilija")}}
 	{% endif %}
 </div>
 
