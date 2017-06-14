@@ -8,12 +8,21 @@
 	{{messages.success_message_single("#{message}")}}
 {% endif %}
 
-<div class="page-header">
-	<h1>{{player.name}}</h1>
-	{% if admin_controls %}
-		{{forms.edit_button("#{base_path}/players/#{player.id}/edit", "Muokkaa urheilijaa")}}
-		{{forms.remove_button("#{base_path}/players/#{player.id}/remove", "Poista urheilija")}}
-	{% endif %}
+
+<div class="page-header content">
+	<div class="row">
+		<div class="col-xs-6">
+			<h1 class="pull-left">{{player.name}}</h1>
+		</div>
+		<div class="col-xs-6">
+		{% if admin_controls %}
+			<ul class="list-inline pull-right admin-buttons">
+				<li>{{forms.edit_button("#{base_path}/players/#{player.id}/edit", "Muokkaa urheilijaa")}}</li>
+				<li>{{forms.remove_button("#{base_path}/players/#{player.id}/remove", "Poista urheilija")}}</li>
+			</ul>
+		{% endif %}
+		</div>
+	</div>
 </div>
 
 <div class="content">

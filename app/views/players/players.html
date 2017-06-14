@@ -7,13 +7,21 @@
 	{{messages.success_message_single("#{message}")}}
 {% endif %}
 
-<div class="page-header">
-	<h1>Urheilijat</h1>
-	{% if admin_controls %}
-		{{forms.new_button("#{base_path}/players/new", "Lisää urheilija")}}
-		{{forms.new_button("#{base_path}/results/new", "Lisää tulos")}}
-	{% endif %}
-	
+
+<div class="page-header content">
+	<div class="row">
+		<div class="col-xs-6">
+			<h1 class="pull-left">Urheilijat</h1>
+		</div>
+		<div class="col-xs-6">
+		{% if admin_controls %}
+			<ul class="list-inline pull-right admin-buttons">
+				<li>{{forms.new_button("#{base_path}/players/new", "Lisää urheilija")}}</li>
+				<li>{{forms.new_button("#{base_path}/results/new", "Lisää tulos")}}</li>
+			</ul>
+		{% endif %}
+		</div>
+	</div>
 </div>
 
 

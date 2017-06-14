@@ -13,6 +13,10 @@
   border-right: 1px solid #ccc;
 }
 
+.admin-buttons {
+  margin-top: 30px;
+}
+
 button.logout {
     border: none;
     color: #777;
