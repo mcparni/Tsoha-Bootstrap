@@ -19,18 +19,29 @@ class AdminController extends BaseController {
 
 	}
 
+
+    /*
+        public static function update($id)
+
+        $validator_case -muuttujan avulla viestitään mitä admin tietoa
+        halutaan muuttaa.
+
+        $validator_case = 0 -- Mitään ei muuteta
+        $validator_case = 1 -- tallennetaan uusi salasana ja käyttäjätunnus
+        $validator_case = 2 -- tallennetaan pelkästään uusi käyttäjätunnus  
+    */
     public static function update($id) {
 		
 	    $params = $_POST;
         $oldAdmin = Admin::find($id);
         $validator_case = 0;
 
-        if(strlen($params['n_password_1']) > 0 || strlen($params['n_password_2']) > 0) {
-            $validator_case = 1;
-        }
-
         if($params['name'] != $oldAdmin->name) {
             $validator_case = 2;
+        }
+
+        if(strlen($params['n_password_1']) > 0 || strlen($params['n_password_2']) > 0) {
+            $validator_case = 1;
         }
 
 		$attributes = array(
@@ -50,6 +61,9 @@ class AdminController extends BaseController {
 		if($validator_case == 0) {
             View::make('admin/edit.html', array('errors'=>$errors, 'message' => 'Mitään ei muutettu' ,  'admin' => $attributes));
 		} else if(count($errors) === 0) {
+            $admin->update($validator_case);
+            $attributes["n_password_1"] = null;
+            $attributes["n_password_2"] = null;
 			View::make('admin/edit.html', array('errors'=>$errors, 'message' => 'Tiedot päivitetty', 'admin' => $attributes));            
 		} else {
             View::make('admin/edit.html', array('errors'=>$errors, 'admin' => $attributes));

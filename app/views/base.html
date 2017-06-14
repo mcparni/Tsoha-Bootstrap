@@ -42,8 +42,9 @@
             <!-- Navigaation linkit -->
             <li><a href="{{base_path}}/players">Urheilijat</a></li>
             <li><a href="{{base_path}}/sports">Lajit</a></li>
-            <li><a href="{{base_path}}/results">Tulokset</a></li>
+            <li class="right-border"><a href="{{base_path}}/results">Tulokset</a></li>
             {% if user_logged_in %}
+              <li><a href="{{base_path}}/admin/{{user_logged_in.id}}/edit"> Muokkaa tietojasi</a></li>
               {{forms.logout_navi("#{base_path}/logout")}}
             {% else %}
              <li><a href="{{base_path}}/login">Kirjaudu sisään</a></li>

@@ -4,6 +4,11 @@
 {% block content %}
   <h1>Muokkaa hallintatietoja</h1>
 
+    <div class="content">
+        <p>Vaihtaessasi pelkkää käyttäjätunnusta, sovellus kysyy vanhaa salasanaasi</p>
+        <p>Vaihtaessasi uutta salasanaa, sovellus kysyy vanhaa salasanaasi, sekä uutta salasanaasi kahteen kertaan. Samalla tallennetaan myös käyttäjätunnus.  Huom! salasanan pituus on vähintään 8 merkkiä.</p>
+    </div>
+
     {% if errors %}
 	    {{messages.error_message_multi(errors)}}
     {% endif %}

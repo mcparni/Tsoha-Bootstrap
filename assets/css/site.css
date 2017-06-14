@@ -9,6 +9,9 @@
   margin: 0px auto;
 }
 
+.right-border {
+  border-right: 1px solid #ccc;
+}
 
 button.logout {
     border: none;

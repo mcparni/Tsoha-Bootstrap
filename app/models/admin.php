@@ -3,7 +3,18 @@
 class Admin extends BaseModel {
     public $id, $name, $password, $n_password_1, $n_password_2, $oldname, $oldpassword;
     
-    public function __construct($attributes){
+     /*
+	 	public function __construct($attributes)
+
+        $attributes["validator_case"] -muuttujan avulla viestitään mitä admin tietoa
+        halutaan muuttaa ja sen perusteella käytetään eri validointifunktioita.
+
+        $attributes["validator_case"] = 1 -- tallennetaan uusi salasana ja käyttäjätunnus
+       	$attributes["validator_case"] = 2 -- tallennetaan pelkästään uusi käyttäjätunnus  
+
+		Jos sitä ei ole asetettu, käytetään oletusvalidointia.   
+    */	
+	public function __construct($attributes){
 		parent::__construct($attributes);
 		$validators = array('validate_name');
 
@@ -33,6 +44,34 @@ class Admin extends BaseModel {
 
 		return null;
 
+	}
+	
+	/*
+	 	public function update($case)
+
+        $case -muuttujan avulla viestitään mitä admin tietoa
+        halutaan muuttaa ja sen perusteella käytetään eri tietokantakyselyä.
+
+        $case = 1 -- tallennetaan uusi salasana ja samalla käyttäjätunnus
+       	$case = 2 -- tallennetaan pelkästään uusi käyttäjätunnus  
+
+		Jos sitä ei ole asetettu, käytetään oletusvalidointia.   
+    */
+	public function update($case) {
+		$query;
+		
+		if($case == 1) {
+			$query = DB::connection()->prepare('UPDATE Admin SET name=:name, password=:password WHERE id=:id RETURNING id');
+		    $query->execute(array('password' => $this->n_password_1,'name' => $this->name, 'id' => $this->id ));
+		}
+		
+		if($case == 2) {
+			$query = DB::connection()->prepare('UPDATE Admin SET name=:name WHERE id=:id RETURNING id');
+		    $query->execute(array('name' => $this->name, 'id' => $this->id ));
+		}
+
+		$row = $query->fetch();
+		$this->id = $row['id'];
 	}
 
     public static function find($id){
