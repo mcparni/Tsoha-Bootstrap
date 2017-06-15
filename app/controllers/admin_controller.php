@@ -2,7 +2,12 @@
 
 class AdminController extends BaseController {
     public static function login(){
-		View::make('login/login.html');
+        $admin_controls = self::check_logged_in();
+        if($admin_controls)
+            Redirect::to('/', array('message' => 'Olet jo kirjautuneena sisään.'));
+		else
+            View::make('login/login.html');	
+		
 	}
     public static function logout(){
         $_SESSION['admin'] = null;
