@@ -66,3 +66,8 @@ Sisäänkirjauduttuaan menemällä päänavigaatiosta "Muokkaa tietojasi" -linki
 ## Uloskirjautuminen
 Päänavigaatiossa on linkki "Kirjaudu ulos" mikäli on kirjautuneena sisään. Sitä klikkaamalla kirjaudutaan ulos.
 
+## Lisenssi
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Tämä työ on lisensoitu <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Nimeä 4.0 Kansainvälinen -lisenssillä</a>.
+
+
