@@ -29,14 +29,14 @@
     <form method="post" action="{{action}}">
     <tr>
 		<td>
-      <select name="player_id">
+      <select class="form-control" name="player_id">
         {% for player in players %}
           <option value="{{player.id}}" {% if player.id == attributes.player_id %} selected="selected" {% endif %}>{{player.name}}</option>          
         {% endfor %}
       </select>
     </td>
 		<td>
-      <select name="sport_id">
+      <select class="form-control" name="sport_id">
         {% for sport in sports %}
           <option value="{{sport.id}}" {% if sport.id == attributes.sport_id %} selected="selected" {% endif %}>{{sport.name}}</option>
         {% endfor %}
