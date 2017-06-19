@@ -4,7 +4,6 @@ class Results extends BaseModel{
 	public $id, $result, $createdon, $sport_id, $player_id,$player_name, $sport_name;
 	
 	public function __construct($attributes){
-		// INSERT INTO Results (player_id, sport_id, result, createdon) VALUES (1,1,'38', NOW());
 		parent::__construct($attributes);
 		$this->validators = array('validate_player', 'validate_sport', 'validate_result');
 	}
