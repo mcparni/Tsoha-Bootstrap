@@ -38,11 +38,13 @@ echo "Asetetaan käyttöoikeudet ja asennetaan Composer..."
 # Asetetaan oikeudet ja asennetaan Composer
 ssh $USERNAME@$SERVER "
 chmod -R a+rX $ROOT_FOLDER
-cd $ROOT/$PROJECT_FOLDER
+cd $ROOT_FOLDER
+cd $PROJECT_FOLDER
 wget https://getcomposer.org/download/1.2.4/composer.phar
 php composer.phar install
-cat sql/drop_tables.sql sql/create_tables.sql | psql -1 -f -
-psql < sql/add_test_data.sql
+cd sql
+cat drop_tables.sql create_tables.sql | psql -1 -f -
+psql < add_test_data.sql
 exit"
 
 echo "Valmis! Sovelluksesi on nyt valmiina osoitteessa $SERVER -palvelimella"
