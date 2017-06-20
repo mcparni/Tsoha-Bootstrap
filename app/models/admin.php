@@ -16,11 +16,11 @@ class Admin extends BaseModel {
     */	
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		$validators = array('validate_name');
+		$validators = array('validate_name','validate_name_max');
 
 		if(array_key_exists ('validator_case' , $attributes )) {
 			if($attributes["validator_case"] == 1) {
-				array_push($validators, "validate_new_password_length", "validate_new_password2_length", "validate_new_password_match", "validate_old_password_match");
+				array_push($validators, "validate_new_password_length", "validate_new_password2_length", "validate_new_password_match", "validate_old_password_match", "validate_new_password_max", "validate_new_password2_max");
 			}
 			if($attributes["validator_case"] == 2) {
 				array_push($validators, "validate_admin_name_change");

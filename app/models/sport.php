@@ -5,7 +5,7 @@ class Sport extends BaseModel{
 	
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		$this->validators = array('validate_name', 'validate_description','validate_sport_sort');
+		$this->validators = array('validate_name', 'validate_description','validate_sport_sort','validate_name_max','validate_description_max');
 	}
 
 	public static function all(){

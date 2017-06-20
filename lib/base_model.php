@@ -21,9 +21,21 @@
         return $field . ' -kentän pituus täytyy olla vähintään '.$length.' merkkiä.';
     }
 
+    private function validate_string_max($field, $string, $length) {
+      if(strlen($string) > $length)
+        return $field . ' -kentän pituus saa olla enintään '.$length.' merkkiä.';
+    }
+
     private function validate_ID($id) {
         if(!(is_numeric($id)))
           return "Id virhe";
+    }
+
+    public function validate_name_max() {
+      return $this->validate_string_max("Nimi", $this->name, 50);
+    }
+    public function validate_description_max() {
+      return $this->validate_string_max("Kuvaus", $this->description, 500);
     }
 
     public function validate_description() {
@@ -38,6 +50,13 @@
       else
         return "Väärä tulosjärjestys.";
 
+    }
+
+    public function validate_new_password_max()  {
+      return $this->validate_string_max("Uusi salasana", $this->n_password_1, 50);
+    }
+    public function validate_new_password2_max() {
+      return $this->validate_string_max("Uusi salasana uudestaan", $this->n_password_2, 50);
     }
 
     public function validate_player_description() {
@@ -99,7 +118,7 @@
         $result = $result + 0;
       else
         return "Tuloksen täytyy olla kokonaisluku."; 
-        
+
       
       if(is_int($result))
         return null;
