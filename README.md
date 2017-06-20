@@ -3,7 +3,7 @@ Web sovellus urheilulajien ja -suoritusten tallentamiseen ja tarkasteluun
 
 Tämä on simppeli web-sivusto, johon voi ylläpitäjä sisäänkirjauduttuaan käydä lisäämässä, poistamassa ja muokkaamassa urheilulajeja, urheilijoita ja tuloksia. Peruskäyttäjä voi taas käydä näitä pelkästään katselemassa.
 
-## Asennus(Linux, yleisempi ohje tulee myöhemmin):
+## Asennus, Linux:
 
 - Kloonaa tämä repo tai lataa zippi tästä reposta ja avaa zippi koneellasi.
 
@@ -22,6 +22,58 @@ Tämä on simppeli web-sivusto, johon voi ylläpitäjä sisäänkirjauduttuaan k
 	bash install.sh
 
 Sovellus on valmis käytettäväksi
+
+## Asennus, yleinen:
+- Kloonaa tämä repo tai lataa zippi tästä reposta ja avaa zippi koneellasi.
+- Tee palvelimellesi haluamasi kansio, jonne siirrät reposta seuraavat kansiot tiedostoineen:
+
+app/<br>
+config/<br>
+lib/<br> 
+vendor/<br> 
+sql/<br> 
+assets/<br>
+
+- Lisäksi siirrä seuraavat tiedostot tekemäsi kansion juureen:
+
+index.php<br> 
+composer.json<br>
+
+-Samaan kansioon tarvitset vielä: <b>composer.phar</b> tiedoston, jonka saat wget:llä, tai hakemalla manuaalisesti alla olevasta osoitteesta:<br>
+https://getcomposer.org/download/1.2.4/composer.phar
+
+- Tee luodun hakemiston juureen .htaccess tiedosto:
+
+touch .htaccess
+
+- Jonne täytyy laittaa seuraavat rivit:
+
+RewriteEngine On<br>
+RewriteCond %{REQUEST_FILENAME} !-f<br>
+RewriteRule ^ index.php [QSA,L]<br>
+
+
+- Suorita luodun hakemiston juuressa komentorivillä komento:
+
+php composer.phar install
+
+- Sen jälkeen suorita seuraavat komennot:
+
+cd sql<br>
+cat drop_tables.sql create_tables.sql | psql -1 -f -<br>
+psql < add_test_data.sql<br>
+
+Sovellus on nyt valmis käytettäväksi. Voi olla että sinun täytyy muuttaa kansioiden oikeuksia:
+
+- Esimerkiksi sen kansion juureen missä tekemäsi kansio sijaitsee ja kirjoittamalla:
+
+chmod -R 755 tekemäsi-kansion-nimi
+
+- Jos teet muutoksia sovellukseesi aja tekemäsi kansion juuressa komento:
+
+php composer.phar dump-autoload
+
+
 
 ## Sovellus:
 Valmis sovellus löytyy osoitteesta: 
