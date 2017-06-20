@@ -7,22 +7,22 @@ CREATE TABLE Admin (
 CREATE TABLE Players (
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
-  description varchar(500),
+  description varchar(500) NOT NULL,
   createdon DATE
 );
 
 CREATE TABLE Sports (
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
-  description varchar(500),
-  sort_order INTEGER, -- 1 tai 0 määrää pitääkö tuloksia katsoa nousevasti vai laskevasti (1=DESC, 0=ASC)
+  description varchar(500) NOT NULL,
+  sort_order INTEGER NOT NULL, -- 1 tai 0 määrää pitääkö tuloksia katsoa nousevasti vai laskevasti (1=DESC, 0=ASC)
   createdon DATE
 );
 
 CREATE TABLE Results (
   id SERIAL PRIMARY KEY,
-  player_id INTEGER REFERENCES Players(id) ON DELETE CASCADE,
-  sport_id INTEGER REFERENCES Sports(id) ON DELETE CASCADE,
-  result varchar(100),
+  player_id INTEGER REFERENCES Players(id) ON DELETE CASCADE NOT NULL,
+  sport_id INTEGER REFERENCES Sports(id) ON DELETE CASCADE NOT NULL,
+  result INTEGER NOT NULL,
   createdon DATE
 );
