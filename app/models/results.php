@@ -5,7 +5,7 @@ class Results extends BaseModel{
 	
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		$this->validators = array('validate_player', 'validate_sport', 'validate_result');
+		$this->validators = array('validate_player', 'validate_sport', 'validate_result', 'validate_result_integer');
 	}
 
 	public static function all(){

@@ -60,12 +60,12 @@ class ResultsController extends BaseController{
 		$result = new Results($attributes);
 
 		$errors = $result->errors();
-
+		
 		if(count($errors) === 0) {
 			$result->update();
 			Redirect::to('/sports/' . $result->sport_id, array('message' => 'Tulosta muokattu'));
 		} else {
-			View::make('results/edit.html', array('errors'=>$errors, 'results' => $attributes, 'sports' => $sports, 'players' => $players));
+			View::make('results/edit.html', array('errors'=>$errors, 'attributes' => $attributes, 'sports' => $sports, 'players' => $players));
 			
 		}
 
