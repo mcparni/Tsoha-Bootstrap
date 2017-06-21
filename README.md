@@ -7,21 +7,34 @@ Tämä on simppeli web-sivusto, johon voi ylläpitäjä sisäänkirjauduttuaan k
 
 - Kloonaa tämä repo tai lataa zippi tästä reposta ja avaa zippi koneellasi.
 
-- Mene sisään hakemistoon ja avaa install.sh -tiedosto
+- Mene sisään hakemistoon ja siellä config/environment.sh -tiedostoon
 
 - Sijoita siellä tiedostossa lainausmerkkien sisään omat tietosi näihin kohtiin:
 
-	USERNAME="{ssh-käyttäjätunnus-tähän}"
-	SERVER="{palvelimesi-osoite-tähän}"
-	ROOT_FOLDER="{html-dokumenttiesi-osoite-palvelimellasi-tähän}"
-	PROJECT_FOLDER="{tämän-projektin-kansionnimi-tähän}"
+	USERNAME="{ssh-käyttäjätunnus-tähän}"<br/>
+	SERVER="{palvelimesi-osoite-tähän}"<br/>
+	ROOT_FOLDER="{html-dokumenttiesi-osoite-palvelimellasi-tähän}"<br/>
+	PROJECT_FOLDER="{tämän-projektin-kansionnimi-tähän}"<br/>
 
 - Laita tarvittaessa config/database.php:ssä kredentiaalit kohdilleen, jotta voit käyttää palvelimellasi tietokantoja
 
-- Tallenna tiedosto ja aja komento:
-	bash install.sh
+- Tallenna tiedosto ja aja komento:<br/>
+	bash boostrap.sh
 
-Sovellus on valmis käytettäväksi
+- Nyt sovellus on valmiina palvelimella. Aja vielä komennot<br/>
+	bash create_tables.sh<br/>
+- Ja<br/>
+	bash add_test_data.sh<br/>
+
+Nyt sovelluksessa on kannat pystyssä ja siellä hiukan testidataa, eli sovellus on valmis käytettäväksi.<br/>
+
+- Voit myös poistaa kannat:<br/>
+	bash drop_tables.sh
+
+- Ja aina kun teet lokaalisti muutoksia sovellukseen, aja seuraava komento, joka siirtää tarvittavat tiedostot palvelimelle:<br/>
+	bash deploy.sh
+
+
 
 ## Asennus, yleinen:
 - Kloonaa tämä repo tai lataa zippi tästä reposta ja avaa zippi koneellasi.
