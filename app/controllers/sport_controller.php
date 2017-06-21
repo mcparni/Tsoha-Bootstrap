@@ -5,20 +5,17 @@ class SportController extends BaseController{
 
 	public static function sports(){
 		$sports = Sport::all();
-		$admin_controls = self::check_logged_in();
-		View::make('sports/sports.html', array('sports' => $sports,'admin_controls' => $admin_controls));
+		View::make('sports/sports.html', array('sports' => $sports));
 	}
 	public static function sport($id){
 		$sport = Sport::find($id);
 		$results = Results::findAllBySport($id);
-		$admin_controls = self::check_logged_in();
-		View::make('sports/sport.html', array('sport' => $sport, 'results'=> $results,'admin_controls' => $admin_controls));
+		View::make('sports/sport.html', array('sport' => $sport, 'results'=> $results));
 	}
 
 	public static function editSport($id){
 		$sport = Sport::find($id);
-		$admin_controls = self::check_logged_in();
-		if($admin_controls)
+		if(self::check_logged_in())
 			View::make('sports/edit.html', array('sport' => $sport));
 		else
 			Redirect::to('/login', array('error' => 'Sinun täytyy ensiksi kirjautua sisään.'));
@@ -26,8 +23,7 @@ class SportController extends BaseController{
 	}
 	
 	public static function new(){
-		$admin_controls = self::check_logged_in();
-		if($admin_controls)
+		if(self::check_logged_in())
 			View::make('sports/new.html');
 		else
 			Redirect::to('/login', array('error' => 'Sinun täytyy ensiksi kirjautua sisään.'));

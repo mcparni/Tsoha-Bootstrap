@@ -2,8 +2,7 @@
 
 class AdminController extends BaseController {
     public static function login(){
-        $admin_controls = self::check_logged_in();
-        if($admin_controls)
+        if(self::check_logged_in())
             Redirect::to('/', array('message' => 'Olet jo kirjautuneena sisään.'));
 		else
             View::make('login/login.html');	
@@ -16,8 +15,7 @@ class AdminController extends BaseController {
 
     public static function editAdmin($id){
 		$admin = Admin::find($id);
-		$admin_controls = self::check_logged_in();
-		if($admin_controls)
+		if(self::check_logged_in())
 			View::make('admin/edit.html', array('admin' => $admin));
 		else
 			Redirect::to('/login', array('error' => 'Sinun täytyy ensiksi kirjautua sisään.'));

@@ -4,19 +4,16 @@ class PlayerController extends BaseController {
 
 	public static function players(){
 		$players = Player::all();
-		$admin_controls = self::check_logged_in();
-		View::make('players/players.html', array('players' => $players, 'admin_controls' => $admin_controls ));
+		View::make('players/players.html', array('players' => $players ));
 	}
 	public static function player($id){
 		$player = Player::find($id);
-		$results = Results::findAllByPlayer($id);
-		$admin_controls = self::check_logged_in();		
-		View::make('players/player.html', array('player' => $player, 'results'=>$results, 'admin_controls' => $admin_controls));
+		$results = Results::findAllByPlayer($id);	
+		View::make('players/player.html', array('player' => $player, 'results'=>$results));
 	}
 	public static function editPlayer($id){
 		$player = Player::find($id);
-		$admin_controls = self::check_logged_in();
-		if($admin_controls)
+		if(self::check_logged_in())
 			View::make('players/edit.html', array('player' => $player));
 		else
 			Redirect::to('/login', array('error' => 'Sinun täytyy ensiksi kirjautua sisään.'));
@@ -24,8 +21,7 @@ class PlayerController extends BaseController {
 	}
 	
 	public static function new(){
-		$admin_controls = self::check_logged_in();
-		if($admin_controls)
+		if(self::check_logged_in())
 			View::make('players/new.html');
 		else
 			Redirect::to('/login', array('error' => 'Sinun täytyy ensiksi kirjautua sisään.'));

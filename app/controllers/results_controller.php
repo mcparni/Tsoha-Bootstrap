@@ -5,16 +5,14 @@ class ResultsController extends BaseController{
 
 	public static function results(){
 		$results = Results::allByTitle();
-		$admin_controls = self::check_logged_in();
-		View::make('results/results.html', array('results' => $results, 'admin_controls' => $admin_controls));
+		View::make('results/results.html', array('results' => $results));
 	}
 
 	public static function editResult($id){
 		$attributes = Results::find($id);
 		$players = Player::all();
 		$sports = Sport::all();
-		$admin_controls = self::check_logged_in();
-		if($admin_controls)
+		if(self::check_logged_in())
 			View::make('results/edit.html', array('attributes' => $attributes,'sports' => $sports, 'players' => $players));
 		else
 			Redirect::to('/login', array('error' => 'Sinun täytyy ensiksi kirjautua sisään.'));
@@ -22,11 +20,10 @@ class ResultsController extends BaseController{
 	}
 	
 	public static function new(){
-		$admin_controls = self::check_logged_in();
 		$players = Player::all();
 		$sports = Sport::all();
-		if($admin_controls)
-			View::make('results/new.html', array('sports' => $sports, 'players' => $players, 'admin_controls' => $admin_controls));
+		if(self::check_logged_in())
+			View::make('results/new.html', array('sports' => $sports, 'players' => $players));
 		else
 			Redirect::to('/login', array('error' => 'Sinun täytyy ensiksi kirjautua sisään.'));
 		
