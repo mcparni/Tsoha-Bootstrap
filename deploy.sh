@@ -20,4 +20,4 @@ cd $ROOT_FOLDER/$PROJECT_FOLDER
 php composer.phar dump-autoload
 exit"
 
-echo "Valmis! Sovelluksesi on nyt valmiina osoitteessa $SERVER -palvelimella kansiossa $ROOT_FOLDER/$PROJECT_FOLER"
+echo "Valmis! Sovelluksesi on nyt valmiina osoitteessa $SERVER -palvelimella kansiossa $ROOT_FOLDER/$PROJECT_FOLDER"

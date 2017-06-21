@@ -35,4 +35,4 @@ wget https://getcomposer.org/download/1.2.4/composer.phar
 php composer.phar install
 exit"
 
-echo "Valmis! Sovelluksesi on nyt valmiina osoitteessa $SERVER -palvelimella kansiossa $ROOT_FOLDER/$PROJECT_FOLER"
+echo "Valmis! Sovelluksesi on nyt valmiina osoitteessa $SERVER -palvelimella kansiossa $ROOT_FOLDER/$PROJECT_FOLDER"
