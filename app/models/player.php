@@ -64,6 +64,16 @@ class Player extends BaseModel{
 	    $row = $query->fetch();
 	    $this->id = $row['id'];
 	}
-	
+
+	/*
+		Player spesifit validaattorit
+	*/
+
+	public function validate_player_ID() {
+		return $this->validate_ID($this->id);
+	}
+	public function validate_player_description() {
+    	return $this->validate_string_length("Kuvaus", $this->description, 5);
+    }
 
 }

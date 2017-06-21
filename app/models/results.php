@@ -136,5 +136,35 @@ class Results extends BaseModel{
 	    $this->id = $row['id'];
 	}
 	
+	/*
+		Result spesifit validaattorit
+	*/
+	
+
+	public function validate_result() {
+		return $this->validate_string_length("Tulos", $this->result, 1);
+	}
+
+	public function validate_result_integer() {
+		$result = $this->result;
+		if(is_numeric($this->result))
+			$result = $result + 0;
+		else
+			return "Tuloksen täytyy olla kokonaisluku."; 
+
+
+		if(is_int($result))
+			return null;
+		else 
+			return "Tuloksen täytyy olla kokonaisluku."; 
+	}
+
+	public function validate_sport() {
+		$sport = Sport::find((int) $this->sport_id);
+		if($sport)
+			return null;
+		else
+			return "Lajia ei löydy";
+	}
 
 }

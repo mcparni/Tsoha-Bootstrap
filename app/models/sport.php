@@ -65,6 +65,20 @@ class Sport extends BaseModel{
 	    $row = $query->fetch();
 	    $this->id = $row['id'];
 	}
+
+	/*
+		Sport spesifit validaattorit
+	*/
+
+
+	public function validate_sport_sort() {
+    	$order = $this->sort_order;
+    	$order = (int) $order;
+    	if($order === 1 || $order === 0)
+        	return null;
+      	else
+        	return "Väärä tulosjärjestys.";
+    }
 	
 
 }
