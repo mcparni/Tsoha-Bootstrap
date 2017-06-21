@@ -9,7 +9,7 @@ Tämä on simppeli web-sivusto, johon voi ylläpitäjä sisäänkirjauduttuaan k
 
 - Mene sisään hakemistoon ja siellä config/environment.sh -tiedostoon
 
-- Sijoita siellä tiedostossa lainausmerkkien sisään omat tietosi näihin kohtiin:
+- Sijoita siellä tiedostossa lainausmerkkien sisään omat tietosi näihin kohtiin ja tallenna sitten tiedosto:
 
 	USERNAME="{ssh-käyttäjätunnus-tähän}"<br/>
 	SERVER="{palvelimesi-osoite-tähän}"<br/>
@@ -18,7 +18,7 @@ Tämä on simppeli web-sivusto, johon voi ylläpitäjä sisäänkirjauduttuaan k
 
 - Laita tarvittaessa config/database.php:ssä kredentiaalit kohdilleen, jotta voit käyttää palvelimellasi tietokantoja
 
-- Tallenna tiedosto ja aja komento:<br/>
+- Kansion päätasolla (mistä löytyy tiedosto bootstrap.sh) aja komento:<br/>
 	bash boostrap.sh
 
 - Nyt sovellus on valmiina palvelimella. Aja vielä komennot<br/>
