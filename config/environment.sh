@@ -8,4 +8,4 @@ SERVER="users2017.cs.helsinki.fi"
 # esim public_html, www, srv/www,... 
 ROOT_FOLDER="htdocs"
 # korvaa tämä haluamallasi kansion nimellä
-PROJECT_FOLDER="testbuild"
+PROJECT_FOLDER="urheilusovellus"
