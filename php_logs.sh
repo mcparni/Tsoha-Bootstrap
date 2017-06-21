@@ -2,5 +2,5 @@
 
 source config/environment.sh
 
-ssh $USERNAME@users2017.cs.helsinki.fi '
+ssh $USERNAME@$SERVER '
 tail -f /home/userlogs/$USER.error'
