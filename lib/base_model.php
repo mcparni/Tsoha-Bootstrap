@@ -43,33 +43,33 @@
 	}
 
 	public function validate_name_max() {
-	  return $this->validate_string_max("Nimi", $this->name, 50);
+		return $this->validate_string_max("Nimi", $this->name, 50);
 	}
 	public function validate_description_max() {
-	  return $this->validate_string_max("Kuvaus", $this->description, 500);
+		return $this->validate_string_max("Kuvaus", $this->description, 500);
 	}
 
 	public function validate_description() {
-	  return $this->validate_string_length("Kuvaus", $this->description, 10);
+		return $this->validate_string_length("Kuvaus", $this->description, 10);
 	}
 
 	public function validate_name() {
-	  return $this->validate_string_length("Nimi" , $this->name, 1);
+		return $this->validate_string_length("Nimi" , $this->name, 1);
 	}
 
 	public function validate_general_ID($id) {
-	  return $this->validate_ID($id);
+		return $this->validate_ID($id);
 	}
 
 	public function errors(){
-	  $errors = array();
-	  foreach($this->validators as $validator){
-		  
-		  $error =$this->{$validator}();
-		  if($error)
-			array_push($errors, $error);
-	  }
-	  return $errors;
+		$errors = array();
+		foreach($this->validators as $validator){
+
+			$error = $this->{$validator}();
+			if($error)
+				array_push($errors, $error);
+		}
+		return $errors;
 	}
 
   }

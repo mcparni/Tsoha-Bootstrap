@@ -69,8 +69,7 @@ class Sport extends BaseModel{
 	/*
 		Sport spesifit validaattorit
 	*/
-
-
+		
 	public function validate_sport_sort() {
     	$order = $this->sort_order;
     	$order = (int) $order;

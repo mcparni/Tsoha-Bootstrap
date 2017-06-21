@@ -56,9 +56,6 @@ class Results extends BaseModel{
 				'createdon' => $row['createdon']
 			));
 	    }
-		//Kint::trace();
-  		//Kint::dump($rows);
-		//Kint::dump($results);
 		if(count($rows) == 0) {
 			$results = null;
 		}
@@ -139,7 +136,6 @@ class Results extends BaseModel{
 	/*
 		Result spesifit validaattorit
 	*/
-	
 
 	public function validate_result() {
 		return $this->validate_string_length("Tulos", $this->result, 1);
