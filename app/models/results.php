@@ -5,7 +5,7 @@ class Results extends BaseModel{
 	
 	public function __construct($attributes){
 		parent::__construct($attributes);
-		$this->validators = array('validate_player', 'validate_sport', 'validate_result', 'validate_result_integer');
+		$this->validators = array('validate_player', 'validate_sport', 'validate_result','validate_result_max', 'validate_result_numeric');
 	}
 
 	public static function all(){
@@ -141,18 +141,18 @@ class Results extends BaseModel{
 		return $this->validate_string_length("Tulos", $this->result, 1);
 	}
 
-	public function validate_result_integer() {
+	public function validate_result_max() {
+		return $this->validate_string_max("Tulos", $this->result, 10);
+	}
+
+	public function validate_result_numeric() {
 		$result = $this->result;
-		if(is_numeric($this->result))
+		if(is_numeric($result)) {
 			$result = $result + 0;
-		else
-			return "Tuloksen täytyy olla kokonaisluku."; 
-
-
-		if(is_int($result))
 			return null;
-		else 
-			return "Tuloksen täytyy olla kokonaisluku."; 
+		} else {
+			return "Tuloksen täytyy olla lukumääräinen, esim: 38 tai 23.03"; 
+		}
 	}
 
 	public function validate_sport() {
